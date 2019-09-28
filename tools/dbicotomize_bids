@@ -1,0 +1,53 @@
+#!/bin/bash
+
+#
+# Script to turn bids-specification repo in a tabular rasa for a new
+# documentation project
+#
+set -eu
+
+git-sedi() {
+	git grep -l -z "$1" | xargs -r -0 sed -i -e "s^$1^$2^g"
+}
+
+# Remove documents pertinent to a big mighty BIDS but not really
+# for a small doc project
+
+git rm -f DECISION-MAKING.md CODEOWNERS || :
+git rm -f -r BIDS_logo || :
+
+# Some seems stale files
+
+git rm -f TOC.md || :
+
+DBIC="Dartmouth Brain Imaging Center"
+longtitle="$DBIC Handbook"
+shorttitle="DBIC Handbook"
+name="dbic-handbook"
+ghorg="dbic"
+ghrepo="handbook"
+ghurl=https://github.com/$ghorg/$ghrepo
+
+git rm -f -r src/* || :
+
+mkdir -p src/images  # TODO: provide favicon.png and logo.png
+
+echo "Prepropulating some files"
+
+echo "# Introduction" > src/01-introduction.md
+echo "# $longtitle" >  src/index.md
+echo -e "Changelog\n\n[Unreleased]($ghurl/tree/HEAD)" > src/CHANGES.md
+
+git add src
+
+# [] and ? below to not match here in place
+# Specific
+git-sedi "[h]ttps?://bids.neuroimaging.io" "http://dartmouth.edu/dbic"
+git-sedi "bids-specification.readthedocs" "dbic.readthedocs"
+git-sedi "bids-standard/bids-specification" "$ghorg/$ghrepo"
+# More generic
+git-sedi "[B]IDS [Ss]pecification" "$shorttitle"
+git-sedi "[B]rain Imaging Data Structure" "$DBIC"
+git-sedi "[B]IDS" "DBIC"
+sed -i -e "s,^site_name: .*,$longtitle vX.X.X-dev,g" mkdocs.yml
+sed -i -e '/02-common-principles/,1000d' mkdocs.yml
