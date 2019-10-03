@@ -1,7 +1,7 @@
 
-# Contributing to the BIDS Specification
+# Contributing to the DBIC Handbook
 
-**Welcome to the BIDS Specification repository!**
+**Welcome to the DBIC Handbook repository!**
 
 *We're so excited you're here and want to contribute.*
 
@@ -11,7 +11,7 @@ We hope that these guidelines are designed to make it as easy as possible to get
 
 Been here before? Already know what you're looking for in this guide? Jump to the following sections:
 
-*   [Joining the BIDS community](#joining-the-community)
+*   [Joining the DBIC community](#joining-the-community)
 *   [Contributing through GitHub](#contributing-through-github)
 *   [Understanding issues](#understanding-issues)
 *   [Writing in markdown](#writing-in-markdown)
@@ -22,14 +22,14 @@ Been here before? Already know what you're looking for in this guide? Jump to th
 
 ## Joining the community
 
-BIDS - the [Brain Imaging Data Structure](https://bids.neuroimaging.io/) - is a growing community of neuroimaging enthusiasts, and we want to make our resources accessible to and engaging for as many researchers as possible.
+DBIC - the [Dartmouth Brain Imaging Center](https://dartmouth.edu/dbic/) - is a growing community of neuroimaging enthusiasts, and we want to make our resources accessible to and engaging for as many researchers as possible.
 
-How do you know that you're a member of the BIDS community? You're here! You know that BIDS exists! You're officially a member of the community. It's THAT easy! Welcome!
+How do you know that you're a member of the DBIC community? You're here! You know that DBIC exists! You're officially a member of the community. It's THAT easy! Welcome!
 
 Most of our discussions take place here in [GitHub issues](#understanding-issues).
 We also have a [bids-discussion](https://groups.google.com/forum/#!forum/bids-discussion) Google Group, although this is largely now an archive of previous conversations.
 
-Moving forward, we encourage all members to contribute here on [GitHub](https://github.com/bids-standard/bids-specification) or on the [NeuroStars](https://neurostars.org/tags/bids) Discourse Forum, under the `bids` tag.
+Moving forward, we encourage all members to contribute here on [GitHub](https://github.com/dbic/handbook) or on the [NeuroStars](https://neurostars.org/tags/bids) Discourse Forum, under the `bids` tag.
 
 To keep on top of new posts, please see this guide for setting your [topic notifications](https://meta.discourse.org/t/discourse-new-user-guide/96331#heading--topic-notifications).
 
@@ -39,15 +39,15 @@ As a reminder, we expect that all contributions adhere to our [Code of Conduct](
 
 [Git](https://git-scm.com/) is a really useful tool for version control. [GitHub](https://github.com/) sits on top of git and supports collaborative and distributed working.
 
-We know that it can be daunting to start using git and GitHub if you haven't worked with them in the past, but the BIDS Specification maintainers are here to help you figure out any of the jargon or confusing instructions you encounter!
+We know that it can be daunting to start using git and GitHub if you haven't worked with them in the past, but the DBIC Handbook maintainers are here to help you figure out any of the jargon or confusing instructions you encounter!
 
 In order to contribute via GitHub you'll need to set up a free account and sign in. Here are some [instructions](https://help.github.com/articles/signing-up-for-a-new-github-account/) to help you get going. Remember that you can ask us any questions you need to along the way.
 
 ## Understanding issues
 
-Every project on GitHub uses [issues](https://github.com/bids-standard/bids-specification/issues) slightly differently.
+Every project on GitHub uses [issues](https://github.com/dbic/handbook/issues) slightly differently.
 
-The following outlines how BIDS developers think about communicating through issues.
+The following outlines how DBIC developers think about communicating through issues.
 
 **Issues** are individual pieces of work that need to be completed or decisions that need to be made to move the project forwards.
 A general guideline: if you find yourself tempted to write a great big issue that
@@ -57,26 +57,26 @@ Issues are assigned [labels](#issue-labels) which explain how they relate to the
 
 ### Issue labels
 
-The current list of labels are [here](https://github.com/bids-standard/bids-specification/labels) and include:
+The current list of labels are [here](https://github.com/dbic/handbook/labels) and include:
 
-* [![Help wanted](https://img.shields.io/badge/-help%20wanted-159818.svg)](https://github.com/bids-standard/bids-specification/labels/community) *These issues contain a task that a member of the team has determined we need additional help with.*
+* [![Help wanted](https://img.shields.io/badge/-help%20wanted-159818.svg)](https://github.com/dbic/handbook/labels/community) *These issues contain a task that a member of the team has determined we need additional help with.*
 
     If you feel that you can contribute to one of these issues, we especially encourage you to do so!
 
-* [![Opinions wanted](https://img.shields.io/badge/-opinions%20wanted-84b6eb.svg)](https://github.com/bids-standard/bids-specification/labels/opinions%20wanted) *These issues hold discussions where we're especially eager for feedback.*
+* [![Opinions wanted](https://img.shields.io/badge/-opinions%20wanted-84b6eb.svg)](https://github.com/dbic/handbook/labels/opinions%20wanted) *These issues hold discussions where we're especially eager for feedback.*
 
     Ongoing discussions benefit from broad feedback.
     This label is used to highlight issues where decisions are being considered, so please join the conversation!
 
-* [![Community](https://img.shields.io/badge/-community-%23ddcc5f.svg)](https://github.com/bids-standard/bids-specification/labels/community) *These issues are related to building and supporting the BIDS community.*
+* [![Community](https://img.shields.io/badge/-community-%23ddcc5f.svg)](https://github.com/dbic/handbook/labels/community) *These issues are related to building and supporting the DBIC community.*
 
-    In addition to the specification itself, we are dedicated to creating a healthy community.
+    In addition to the handbook itself, we are dedicated to creating a healthy community.
     These issues highlight pieces of work or discussions around how we can support our members and make it easier to contribute.
 
 
 ## Writing in markdown
 
-The specification documents follow the [Markdown Style Guide](http://www.cirosantilli.com/markdown-style-guide/).
+The handbook documents follow the [Markdown Style Guide](http://www.cirosantilli.com/markdown-style-guide/).
 
 You
 can validate your changes against the guide using [remark](https://github.com/remarkjs/remark-lint) which works as a
@@ -87,15 +87,15 @@ We have deployed a continuous integrator ([circle CI](https://circleci.com/)) to
 
 GitHub has a helpful page on [getting started with writing and formatting on GitHub](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github).
 
-## Building the specification using mkdocs
+## Building the handbook using mkdocs
 
-We are using mkdocs to render our specification. Please follow these instructions if you would like to build the specification locally.
+We are using mkdocs to render our handbook. Please follow these instructions if you would like to build the handbook locally.
 
 #### 1. Install mkdocs
 
 To begin please follow [this link](https://www.mkdocs.org/#installation) to install mkdocs locally.
 
-#### 2. Download the BIDS specification [repository](https://github.com/bids-standard/bids-specification/tree/master) onto your computer
+#### 2. Download the DBIC Handbook [repository](https://github.com/dbic/handbook/tree/master) onto your computer
 
 This can be done by clicking the green button on the right titled "Clone or download"
 
@@ -103,26 +103,26 @@ This can be done by clicking the green button on the right titled "Clone or down
 
 Please go [here](https://squidfunk.github.io/mkdocs-material/) and install our theme - material. The terminal command is `pip install mkdocs-material`
 
-#### 4. In the terminal (command line) navigate to your local version of the specification
+#### 4. In the terminal (command line) navigate to your local version of the handbook
 
-This location will have the same files you see on our [main specification page](https://github.com/bids-standard/bids-specification). Note: A finder window may not show the hidden files (those that start with a period i.e. .remarkrc)
+This location will have the same files you see on our [main handbook page](https://github.com/dbic/handbook). Note: A finder window may not show the hidden files (those that start with a period i.e. .remarkrc)
 
 #### 5. Ready to build!
 
-Using the terminal (command line) please enter `mkdocs serve`. This will allow you to see a local version of the specification. The local address will be `http://127.0.0.1:8000`. You may enter that into your browser and this will bring up the specification!
+Using the terminal (command line) please enter `mkdocs serve`. This will allow you to see a local version of the handbook. The local address will be `http://127.0.0.1:8000`. You may enter that into your browser and this will bring up the handbook!
 
 ## Making a change with a pull request
 
-We appreciate all contributions to the BIDS Specification. **THANK YOU** for helping us build this useful resource.
+We appreciate all contributions to the DBIC Handbook. **THANK YOU** for helping us build this useful resource.
 
 #### 1. Comment on an existing issue or open a new issue referencing your addition
 
-This allows other members of the BIDS Specification team to confirm that you aren't overlapping with work that's currently underway and that everyone is on the same page with the goal of the work you're going to carry out.
+This allows other members of the DBIC Handbook team to confirm that you aren't overlapping with work that's currently underway and that everyone is on the same page with the goal of the work you're going to carry out.
 
 
-#### 2. [Fork](https://help.github.com/articles/fork-a-repo/) [this repository](https://github.com/bids-standard/bids-specification) to your profile
+#### 2. [Fork](https://help.github.com/articles/fork-a-repo/) [this repository](https://github.com/dbic/handbook) to your profile
 
-This is now your own unique copy of the BIDS Specification. Changes here won't affect anyone else's work, so it's a safe space to explore edits to the specification!
+This is now your own unique copy of the DBIC Handbook. Changes here won't affect anyone else's work, so it's a safe space to explore edits to the handbook!
 
 Make sure to [keep your fork up to date](https://help.github.com/articles/syncing-a-fork/) with the master repository, otherwise you can end up with lots of dreaded [merge conflicts](https://help.github.com/articles/about-merge-conflicts/).
 
@@ -136,10 +136,10 @@ Please keep the title of your pull request short but informative - it will
 appear in the [changelog](src/CHANGES.md).
 
 Use one of the following prefixes in the title of your pull request:
-  - `[ENH]` - enhancement of the specification that adds a new feature or
+  - `[ENH]` - enhancement of the handbook that adds a new feature or
     support for a new data type
   - `[FIX]` - fix of a typo or language clarification
-  - `[INFRA]` - changes to the infrastructure automating the specification
+  - `[INFRA]` - changes to the infrastructure automating the handbook
     release (for example building HTML docs etc.)
   - `[MISC]` - everything else including changes to the file listing
     contributors
@@ -148,11 +148,11 @@ If you are opening a pull request to obtain early feedback, but the changes
 are not ready to be merged (a.k.a. Work in Progress pull request) please
 use a [draft pull request](https://github.blog/2019-02-14-introducing-draft-pull-requests/).
 
-A member of the BIDS Specification team will review your changes to confirm that they can be merged into the main codebase.
+A member of the DBIC Handbook team will review your changes to confirm that they can be merged into the main codebase.
 
 A [review](https://help.github.com/articles/about-pull-request-reviews/) will probably consist of a few questions to help clarify the work you've done. Keep an eye on your GitHub notifications and be prepared to join in that conversation.
 
-You can update your [fork](https://help.github.com/articles/about-forks/) of the BIDS Specification and the pull request will automatically update with those commits. You don't need to submit a new pull request when you make a change in response to a review.
+You can update your [fork](https://help.github.com/articles/about-forks/) of the DBIC Handbook and the pull request will automatically update with those commits. You don't need to submit a new pull request when you make a change in response to a review.
 
 GitHub has a [nice introduction](https://help.github.com/articles/github-flow/) to the pull request workflow, but please [get in touch](#get-in-touch) if you have any questions.
 
@@ -223,7 +223,7 @@ The decision-making rules are outlined in [DECISION-MAKING.md](DECISION-MAKING.m
 
 ## Recognizing contributions
 
-BIDS follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification, so we welcome and recognize all contributions from documentation to testing to code development. You can see a list of current contributors in the [BIDS specification](https://github.com/bids-standard/bids-specification/blob/master/src/99-appendices/01-contributors.md).
+DBIC follows the [all-contributors](https://github.com/kentcdodds/all-contributors) handbook, so we welcome and recognize all contributions from documentation to testing to code development. You can see a list of current contributors in the [DBIC Handbook](https://github.com/dbic/handbook/blob/master/src/99-appendices/01-contributors.md).
 
 ## Thank you!
 

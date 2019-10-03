@@ -5,25 +5,25 @@ allowing testing and edits prior to merging to master.
 The following procedure ensures a predictable release.
 
 The protocol assumes that you have a [fork](https://help.github.com/en/articles/fork-a-repo)
-of the bids-standard/bids-specification repository and have [cloned](https://help.github.com/en/articles/cloning-a-repository)
-your fork locally to a directory called `bids-specification`.
+of the dbic/handbook repository and have [cloned](https://help.github.com/en/articles/cloning-a-repository)
+your fork locally to a directory called `handbook`.
 
-### 1. Fetch the latest version of the [master branch of the BIDS-specification](https://github.com/bids-standard/bids-specification/tree/master)
+### 1. Fetch the latest version of the [master branch of the DBIC-handbook](https://github.com/dbic/handbook/tree/master)
 
 You should have a remote, which we will call `upstream`, for the
-[bids-standard/bids-specification](https://github.com/bids-standard/bids-specification/)
+[dbic/handbook](https://github.com/dbic/handbook/)
 repository:
 
 ```Shell
 $ git remote get-url upstream
-git@github.com:bids-standard/bids-specification.git
+git@github.com:dbic/handbook.git
 ```
 
 If you do not, add it with:
 
 ```Shell
-$ cd bids-specification
-$ git remote add upstream git@github.com:bids-standard/bids-specification.git
+$ cd handbook
+$ git remote add upstream git@github.com:dbic/handbook.git
 ```
 
 Fetch the current repository state and create a new `rel/<version>` branch based on
@@ -38,29 +38,29 @@ $ git checkout -b rel/1.2.0 upstream/master
 ### 2. Update the version and the contributors list
 
 Change the "Unreleased" heading in
-[src/CHANGES.md](https://github.com/bids-standard/bids-specification/blob/master/src/CHANGES.md)
+[src/CHANGES.md](https://github.com/dbic/handbook/blob/master/src/CHANGES.md)
 to `v<version>`, and link to the target ReadTheDocs URL.
 If the target release date is known, include the date in YYYY-MM-DD in parentheses after
 the link.
 
 ```Diff
 - ## Unreleased
-+ ## [v1.2.0](https://bids-specification.readthedocs.io/en/v1.2.0/) (2019-03-04)
++ ## [v1.2.0](https://dbic.readthedocs.io/en/v1.2.0/) (2019-03-04)
 ```
 
 The date can be changed or added later, so accurate prediction is not necessary.
 
 Remove the `-dev` from the version in
-[mkdocs.yml](https://github.com/bids-standard/bids-specification/blob/master/mkdocs.yml)
-configuration, so the title will be correct for the released specification.
+[mkdocs.yml](https://github.com/dbic/handbook/blob/master/mkdocs.yml)
+configuration, so the title will be correct for the released handbook.
 If the version preceding the `-dev` is not the target version, update the version as well.
 In the figure below, we update `v1.2.0-dev` to `v1.2.0`.
 ![dev-to-stable](release_images/site_name_release_1.2dev-1.2.png "dev-to-stable")
 
 Note: this will make our continuous integration ([CircleCI](https://circleci.com/)) fail. This fails because the URL of the new ReadTheDocs rendering has not been generated at this time. It will be generated once the GitHub release has been completed. 
 
-Synchronize the [Contributors appendix](https://github.com/bids-standard/bids-specification/blob/master/src/99-appendices/01-contributors.md)
-with the [Contributors wiki page](https://github.com/bids-standard/bids-specification/wiki/Contributors)
+Synchronize the [Contributors appendix](https://github.com/dbic/handbook/blob/master/src/99-appendices/01-contributors.md)
+with the [Contributors wiki page](https://github.com/dbic/handbook/wiki/Contributors)
 to ensure all contributors are duly credited.
 Be sure not to remove credits if both have been edited.
 
@@ -104,7 +104,7 @@ $ git push rel/1.2.0
 ### 5. Clean the changelog
 
 Review `src/CHANGES.md` to ensure that the document produces a changelog that is useful to a
-reader of the specification.
+reader of the handbook.
 For example, several small PRs fixing typos might be merged into a single line-item, or less
 important changes might be moved down the list to ensure that large changes are more prominent.
 
@@ -116,8 +116,8 @@ The date should be placed after the link to the versioned URL.
 For example:
 
 ```Diff
-- ## [v1.2.0](https://bids-specification.readthedocs.io/en/v1.2.0/)
-+ ## [v1.2.0](https://bids-specification.readthedocs.io/en/v1.2.0/) (2019-03-04)
+- ## [v1.2.0](https://dbic.readthedocs.io/en/v1.2.0/)
++ ## [v1.2.0](https://dbic.readthedocs.io/en/v1.2.0/) (2019-03-04)
 ```
 
 Verify that the pull request title matches "REL: vX.Y.Z" and merge the pull request.
@@ -150,10 +150,10 @@ There are four components to the tag command:
 
 Some GitHub processes may only trigger on a GitHub release, rather than a tag push.
 To make a GitHub release, go to the [Releases
-](https://github.com/bids-standard/bids-specification/releases) page:
+](https://github.com/dbic/handbook/releases) page:
 ![GH-release-1](release_images/GH-release_1.png "GH-release-1")
 
-Click [Draft a new release](https://github.com/bids-standard/bids-specification/releases/new):
+Click [Draft a new release](https://github.com/dbic/handbook/releases/new):
 
 ![GH-release-2](release_images/GH-release_2.png "GH-release-2")
 
@@ -165,7 +165,7 @@ description:
 Click "Publish release".
 
 Verify ReadTheDocs builds complete and publish. If needed, manually
-trigger [builds](https://readthedocs.org/projects/bids-specification/builds/)
+trigger [builds](https://readthedocs.org/projects/handbook/builds/)
 for `stable` and the most recent tag.
 
 ### 9. Edit the mkdocs.yml file site_name to set a new development version
