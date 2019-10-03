@@ -10,11 +10,11 @@ git-sedi() {
 	git grep -l -z "$1" | xargs -r -0 sed -i -e "s^$1^$2^g"
 }
 
-# Remove documents pertinent to a big mighty BIDS but not really
+# Remove documents pertinent to a big mighty BiDs but not really
 # for a small doc project
 
 git rm -f DECISION-MAKING.md CODEOWNERS || :
-git rm -f -r BIDS_logo || :
+git rm -f -r [B]IDS_logo || :
 
 # Some seems stale files
 
@@ -34,20 +34,39 @@ mkdir -p src/images  # TODO: provide favicon.png and logo.png
 
 echo "Prepropulating some files"
 
-echo "# Introduction" > src/01-introduction.md
-echo "# $longtitle" >  src/index.md
-echo -e "Changelog\n\n[Unreleased]($ghurl/tree/HEAD)" > src/CHANGES.md
+echo "# Introduction" >| src/01-introduction.md
+echo "# $longtitle" >|  src/index.md
+echo -e "Changelog\n\n[Unreleased]($ghurl/tree/HEAD)" >| src/CHANGES.md
+
+for f in src/99-appendices/01-contributors.md src/99-appendices/02-licenses.md; do
+	git reset -- $f
+	git checkout -- $f
+done
+
+sed -i -e '/^-/,1000d' src/99-appendices/01-contributors.md
 
 git add src
 
+echo "Replacements"
+
 # [] and ? below to not match here in place
 # Specific
-git-sedi "[h]ttps?://bids.neuroimaging.io" "http://dartmouth.edu/dbic"
-git-sedi "bids-specification.readthedocs" "dbic.readthedocs"
-git-sedi "bids-standard/bids-specification" "$ghorg/$ghrepo"
+git-sedi "[b]ids.neuroimaging.io" "dartmouth.edu/dbic"
+git-sedi "[b]ids-specification.readthedocs" "dbic.readthedocs"
+git-sedi "[b]ids-standard/bids-specification" "$ghorg/$ghrepo"
+git-sedi "[g]ithub.com/bids-standard" "github.com/$ghorg"
+
+sed -i -e "s,bids-standard,$ghorg,g" .circleci/* Release*
+sed -i -e "s,bids-specification,$ghrepo,g" .circleci/* Release*
 # More generic
 git-sedi "[B]IDS [Ss]pecification" "$shorttitle"
 git-sedi "[B]rain Imaging Data Structure" "$DBIC"
 git-sedi "[B]IDS" "DBIC"
-sed -i -e "s,^site_name: .*,$longtitle vX.X.X-dev,g" mkdocs.yml
+sed -i -e "s,^site_name: .*,site_name: $longtitle vX.X.X-dev,g" mkdocs.yml
 sed -i -e '/02-common-principles/,1000d' mkdocs.yml
+sed -i -e '/twitter/d' README.md
+# there is a mystery -- not replaced
+sed -i -e 's,bids.neuroimaging.i[o],dartmouth.edu/dbic,g' *md
+sed -i -e "s,specification,handbook,g" *.md .github/*
+
+echo "Done - the rest tune manually"
