@@ -69,4 +69,6 @@ sed -i -e '/twitter/d' README.md
 sed -i -e 's,bids.neuroimaging.i[o],dartmouth.edu/dbic,g' *md
 sed -i -e "s,specification,handbook,g" *.md .github/*
 
+git add -u
+
 echo "Done - the rest tune manually"
