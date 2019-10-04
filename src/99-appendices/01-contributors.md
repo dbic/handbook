@@ -5,7 +5,7 @@ Legend (source:
 
 | Emoji | Represents                                                                  |
 |:------|:----------------------------------------------------------------------------|
-| 💬    | Answering Questions (on the mailing list, NeuroStars, GitHub, or in person) |
+| 💬    | Answering Questions (on the mrusers, NeuroStars, GitHub, or in person)      |
 | 🐛    | Bug reports                                                                 |
 | 📝    | Blogposts                                                                   |
 | 💻    | Code                                                                        |
@@ -22,7 +22,7 @@ Legend (source:
 | 🔧    | Tools                                                                       |
 | 🌍    | Translation                                                                 |
 | ⚠️    | Tests                                                                       |
-| ✅     | Tutorials                                                                   |
+| ✅    | Tutorials                                                                   |
 | 📢    | Talks                                                                       |
 | 📹    | Videos                                                                      |
 
@@ -30,3 +30,4 @@ The following individuals have contributed to the Dartmouth Brain Imaging Center
 ecosystem (in alphabetical order). If you contributed to the DBIC ecosystem and
 your name is not listed, please add it.
 
+-   Yaroslav O. Halchenko 📖📢🔧💬🐛👀
