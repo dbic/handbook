@@ -20,9 +20,8 @@ nav:
         - JEDCap: XXX.md
         - Experimental design: XXX.md
         - Pre-registration: XXX.md
-    - Data Collection:
-        - Stimuli delivery: XXX.md
-        - Behavioral: XXX.md
+    - Data collection:
+        - Stimuli/Behavioral: stimuli.md
         - MRI:
           - ReproIn naming convention: mri/reproin.md
           - Siemens Console Walkthrough: mri/walkthrough-1.md
@@ -34,14 +33,14 @@ nav:
         - DataLad: XXX.md
         - Containers: XXX.md
         - PyBIDS: XXX.md
-    - Data Access:
+    - Data access:
         - DICOMs: XXX.md
         - BIDS: XXX.md
-    - Data Processing:
+    - Data processing:
         - QA: XXX.md
         - Preprocessing: XXX.md
         - Analysis: XXX.md
-        - Computing Resources:
+        - Computing resources:
             - Discovery HPC: XXX.md
     - Publishing:
         - Datasets: XXX.md
@@ -53,5 +52,5 @@ nav:
         - Licenses: 99-appendices/02-licenses.md
     - Changelog: CHANGES.md
     - Contributing: CONTRIBUTING.md
-    - DBIC Website: http://dartmouth.edu/dbic
+    - DBIC website: http://dartmouth.edu/dbic
     - DBIC GitHub: http://github.com/dbic
