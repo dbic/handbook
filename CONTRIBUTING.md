@@ -1,7 +1,7 @@
 
 # Contributing to the DBIC Handbook
 
-**Welcome to the DBIC Handbook repository!**
+**Welcome to the DBIC Handbook repository located at [github.com/dbic/handbook](http://github.com/dbic/handbook) !**
 
 *We're so excited you're here and want to contribute.*
 
