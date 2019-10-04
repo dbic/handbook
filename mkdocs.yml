@@ -16,3 +16,10 @@ use_directory_urls: false
 nav:
     - The DBIC Handbook:
       - Introduction: 01-introduction.md
+      - Appendix:
+        - Contributors: 99-appendices/01-contributors.md
+        - Licenses: 99-appendices/02-licenses.md
+      - Changelog: CHANGES.md
+    - The DBIC:
+      - Website: http://dartmouth.edu/dbic
+      - GitHub: http://github.com/dbic
