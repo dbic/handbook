@@ -25,7 +25,7 @@ nav:
         - Behavioral: XXX.md
         - MRI:
           - ReproIn naming convention: mri/reproin.md
-          - Siemens Console Walkthrough: mri/siemens-walkthrough.md
+          - Siemens Console Walkthrough: mri/walkthrough-1.md
         - EEG: XXX.md
         - MRS: XXX.md
     - Useful basics:
