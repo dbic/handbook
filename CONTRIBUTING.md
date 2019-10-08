@@ -133,7 +133,7 @@ Try to keep the changes focused. If you submit a large amount of work in all in 
 #### 4. Submit a [pull request](https://help.github.com/articles/about-pull-requests/)
 
 Please keep the title of your pull request short but informative - it will
-appear in the [changelog](src/CHANGES.md).
+appear in the [changelog](CHANGES.md).
 
 Use one of the following prefixes in the title of your pull request:
   - `[ENH]` - enhancement of the handbook that adds a new feature or
@@ -218,7 +218,7 @@ git commit -m 'STY: Fixed Markdown style'
 
 ## How the decision to merge a pull request is made?
 
-The decision-making rules are outlined in [DECISION-MAKING.md](DECISION-MAKING.md).
+TODO: decide on either we should establish a formal procedure.  yoh thinks it might not be needed to be that formal for starters.
 
 
 ## Recognizing contributions
