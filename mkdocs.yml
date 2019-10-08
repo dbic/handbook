@@ -23,8 +23,9 @@ nav:
     - Data collection:
         - Stimuli/Behavioral: stimuli.md
         - MRI:
-          - ReproIn naming convention: mri/reproin.md
-          - Siemens Console Walkthrough: mri/walkthrough-1.md
+            - ReproIn naming convention: mri/reproin.md
+            - Siemens Console Walkthrough: mri/walkthrough-1.md
+            - MR Safety: mri/safety.md
         - EEG: XXX.md
         - MRS: XXX.md
     - Useful basics:
