@@ -16,38 +16,38 @@ use_directory_urls: false
 nav:
     - Introduction: 01-introduction.md
     - A new study:
-        - Human subjects: XXX.md
-        - JEDCap: XXX.md
-        - Experimental design: XXX.md
-        - Pre-registration: XXX.md
+        - Human subjects: TODO.md
+        - JEDCap: TODO.md
+        - Experimental design: TODO.md
+        - Pre-registration: TODO.md
     - Data collection:
         - Stimuli/Behavioral: stimuli.md
         - MRI:
             - ReproIn naming convention: mri/reproin.md
             - Siemens Console Walkthrough: mri/walkthrough-1.md
             - MR Safety: mri/safety.md
-        - EEG: XXX.md
-        - MRS: XXX.md
+        - EEG: TODO.md
+        - MRS: TODO.md
     - Useful basics:
-        - Shell: XXX.md
-        - SSH: XXX.md
-        - DataLad: XXX.md
-        - Containers: XXX.md
-        - PyBIDS: XXX.md
+        - Shell: TODO.md
+        - SSH: TODO.md
+        - DataLad: TODO.md
+        - Containers: TODO.md
+        - PyBIDS: TODO.md
     - Data access:
-        - DICOMs: XXX.md
-        - BIDS: XXX.md
+        - DICOMs: TODO.md
+        - BIDS: TODO.md
     - Data processing:
-        - QA: XXX.md
-        - Preprocessing: XXX.md
-        - Analysis: XXX.md
+        - QA: TODO.md
+        - Preprocessing: TODO.md
+        - Analysis: TODO.md
         - Computing resources:
-            - Discovery HPC: XXX.md
+            - Discovery HPC: TODO.md
     - Publishing:
-        - Datasets: XXX.md
+        - Datasets: TODO.md
         - Papers:
-            - Data descriptor: XXX.md
-            - Study paper(s): XXX.md
+            - Data descriptor: TODO.md
+            - Study paper(s): TODO.md
     - Appendix:
         - Contributors: 99-appendices/01-contributors.md
         - Licenses: 99-appendices/02-licenses.md
