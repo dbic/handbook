@@ -8,7 +8,7 @@ The [Dartmouth Brain Imaging Center (DBIC)](https://dartmouth.edu/dbic) is an em
 organisation of neuroimaging data.
 
 In this repository, we develop the
-[DBIC Handbook](https://dbic.readthedocs.io/en/latest/).
+[DBIC Handbook](https://dbic-handbook.readthedocs.io/en/latest/).
 
 **Want to learn more about working with DBIC? Have a question, comment, or suggestion?**
 Open or comment on one of our [NeuroStars issues](https://neurostars.org/tags/bids) or check out the [DBIC Starter Kit](https://github.com/dbic/bids-starter-kit)!
