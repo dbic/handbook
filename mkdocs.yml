@@ -42,7 +42,7 @@ nav:
         - Preprocessing: TODO.md
         - Analysis: TODO.md
         - Computing resources:
-            - Discovery HPC: TODO.md
+            - Discovery HPC: discovery.md
     - Publishing:
         - Datasets: TODO.md
         - Papers:
