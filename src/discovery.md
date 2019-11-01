@@ -14,6 +14,9 @@ TODO
 
 ## Password less authentication for SSH
 
+**Note**: ATM it first requires a regular login first, or otherwise even with
+`kinit` just locally, it logs in but permissions are not properly set (TODO JH)
+
 1. modify ~/.ssh/config to have a section like
 
         Host discovery7.hpcc.dartmouth.edu discovery7
@@ -32,6 +35,7 @@ to see if there is an active token.  As you will see from `klist` output, that
 token has expiration date, which is 10 hours from the moment you `kinit`ed it. 
 You could use `kinit -R` (or just ssh again) to refresh the ticket.  It will be
 refreshed for up to 30 days. 
+
 
 TODO: make it even more sophisticated (auto-updated)
 
