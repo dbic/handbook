@@ -38,7 +38,7 @@ echo "# Introduction" >| src/01-introduction.md
 echo "# $longtitle" >|  src/index.md
 echo -e "Changelog\n\n[Unreleased]($ghurl/tree/HEAD)" >| src/CHANGES.md
 
-for f in src/99-appendices/01-contributors.md src/99-appendices/02-licenses.md; do
+for f in src/js src/99-appendices/01-contributors.md src/99-appendices/02-licenses.md; do
 	git reset -- $f
 	git checkout -- $f
 done
