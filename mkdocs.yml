@@ -25,7 +25,7 @@ nav:
       - DataLad: datalad.md
       - PyBIDS: TODO.md
     - A new study:
-        - Human subjects: TODO.md
+        - Policies & procedures: https://www.dartmouth.edu/dbic/
         - JEDCap: TODO.md
         - Experimental design: TODO.md
         - Pre-registration: TODO.md
