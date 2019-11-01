@@ -18,34 +18,33 @@ docs_dir: 'src'
 use_directory_urls: false
 nav:
     - Introduction: 01-introduction.md
+    - Useful basics:
+      - Shell: TODO.md
+      - SSH: TODO.md
+      - Containers: containers.md
+      - DataLad: datalad.md
+      - PyBIDS: TODO.md
     - A new study:
         - Human subjects: TODO.md
         - JEDCap: TODO.md
         - Experimental design: TODO.md
         - Pre-registration: TODO.md
-    - Data collection:
-        - Stimuli/Behavioral: stimuli.md
-        - MRI:
-            - ReproIn naming convention: mri/reproin.md
-            - Siemens Console Walkthrough: mri/walkthrough-1.md
-            - MR Safety: mri/safety.md
-        - EEG: TODO.md
-        - MRS: TODO.md
-    - Useful basics:
-        - Shell: TODO.md
-        - SSH: TODO.md
-        - Containers: containers.md
-        - DataLad: datalad.md
-        - PyBIDS: TODO.md
-    - Data access:
-        - DICOMs: TODO.md
-        - BIDS: TODO.md
-    - Data processing:
-        - QA: TODO.md
-        - Preprocessing: TODO.md
-        - Analysis: TODO.md
-        - Computing resources:
-            - Discovery HPC: discovery.md
+    - Stimuli/Behavioral: stimuli.md
+    - MRI:
+        - ReproIn naming convention: mri/reproin.md
+        - Siemens Console Walkthrough: mri/walkthrough-1.md
+        - MR Safety: mri/safety.md
+        - Data access:
+            - DICOMs: TODO.md
+            - BIDS: TODO.md
+        - Data processing:
+            - QA: TODO.md
+            - Preprocessing: TODO.md
+            - Analysis: TODO.md
+    - EEG: TODO.md
+    - MRS: TODO.md
+    - Computing resources:
+      - Discovery HPC: discovery.md
     - Publishing:
         - Datasets: TODO.md
         - Papers:
