@@ -154,7 +154,7 @@ A [review](https://help.github.com/articles/about-pull-request-reviews/) will pr
 
 You can update your [fork](https://help.github.com/articles/about-forks/) of the DBIC Handbook and the pull request will automatically update with those commits. You don't need to submit a new pull request when you make a change in response to a review.
 
-GitHub has a [nice introduction](https://help.github.com/articles/github-flow/) to the pull request workflow, but please [get in touch](#get-in-touch) if you have any questions.
+GitHub has a [nice introduction](https://help.github.com/articles/github-flow/) to the pull request workflow, but please [get in touch](https://github.com/dbic/handbook/issues/new) if you have any questions.
 
 ## Example pull request
 <img align="center" src="https://i.imgur.com/s8yELfK.png" alt="Example-Contribution" width="800"/>
