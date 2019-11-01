@@ -54,6 +54,7 @@ nav:
     - Appendix:
         - Contributors: 99-appendices/01-contributors.md
         - Licenses: 99-appendices/02-licenses.md
+    - Additional resources: additional_resources.md
     - Changelog: CHANGES.md
     - Contributing: CONTRIBUTING.md
     - DBIC website: http://dartmouth.edu/dbic
