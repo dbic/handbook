@@ -31,8 +31,8 @@ nav:
     - Useful basics:
         - Shell: TODO.md
         - SSH: TODO.md
-        - DataLad: TODO.md
-        - Containers: TODO.md
+        - Containers: containers.md
+        - DataLad: datalad.md
         - PyBIDS: TODO.md
     - Data access:
         - DICOMs: TODO.md
