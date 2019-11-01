@@ -1,5 +1,28 @@
 # Everything you need to know about Discovery HPC
 
+Discovery is a HPC cluster which DBIC users could utilize to run heavy computation.
+[Discovery Overview](https://rc.dartmouth.edu/index.php/discovery-overview/)
+and pages within provide official generic information about Discovery - what it
+provides and how to use it.  This section provides additional, typically DBIC 
+users specific information and hints.
+
+## The "modules"
+
+TODO: brief intro into [modules](http://modules.sourceforge.net/) - the system
+used a collection of available environments.
+
+For the purpose of using DataLad, please use `python/3.7-Anaconda-datalad` 
+module which you can enable via `module load python/3.7-Anaconda-datalad`: 
+
+```bash
+[d31548v@discovery7 ~]$ which datalad
+/usr/bin/which: no datalad in (/dartfs-hpc/admin/opt/el7/intel/...
+[d31548v@discovery7 ~]$ module load python/3.7-Anaconda-datalad 
+[d31548v@discovery7 ~]$ which datalad
+/optnfs/common/miniconda3-datalad/bin/datalad
+```
+ 
+
 ## The Great and Evil ACL
 
 If you drag&drop a file from your Windows OS machine into the mounted POSIX 
