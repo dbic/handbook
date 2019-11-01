@@ -2,7 +2,7 @@
 [![CircleCI](https://circleci.com/gh/dbic/handbook.svg?style=svg)](https://circleci.com/gh/dbic/handbook)
 
 
-<img src="./DBIC_logo/DBIC_logo_black_transparent_background_crop.png" alt="bids-logo" width="600"/>
+<img src="./DBIC_logo/DBIC_logo_black_transparent_background_crop.png" alt="dbic-log" width="600"/>
 
 The [Dartmouth Brain Imaging Center (DBIC)](https://dartmouth.edu/dbic) is an emerging standard for the
 organisation of neuroimaging data.
