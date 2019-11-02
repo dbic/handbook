@@ -37,13 +37,11 @@ TODO
 
 ## Password less authentication for SSH
 
-**Note**: ATM it first requires a regular login first, or otherwise even with
-`kinit` just locally, it logs in but permissions are not properly set (TODO JH)
-
 1. modify ~/.ssh/config to have a section like
 
         Host discovery7.hpcc.dartmouth.edu discovery7
           GSSAPIAuthentication yes
+          GSSAPIDelegateCredentials yes
 
 2. install kerberos client utilities.
 
