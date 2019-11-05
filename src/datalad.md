@@ -22,3 +22,12 @@ datalad install -d . -s rolando.cns.dartmouth.edu:/inbox/BIDS/Haxby/Sam/1021_act
 # Getting only a sample data (1 subject) for demonstration here
 datalad get bids/sub-sid000005
 ```
+
+TODO: finish
+
+Meanwhile, have a look at 
+
+- https://github.com/ReproNim/containers/#a-typical-workflow 
+- a bit too convoluted ATM example with either `datalad run` or `reproman run` for
+  scheduling parallel execution across cluster: https://github.com/ReproNim/reproman/pull/438
+- and possible future answers on https://neurostars.org/t/using-fmriprep-with-datalad-containers-run/5327 
