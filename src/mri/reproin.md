@@ -39,7 +39,7 @@ where
 - `<seqtype[-label]>`
    is a known BIDS sequence type which is usually a name of the folder under
    subject's directory. And (optional) label is specific per sequence type
-   (e.g. typical `bold` for func, or `T1w` for `anat`), which could often
+   (e.g. typical `bold` for `func`, or `T1w` for `anat`, `fid` for `mrs`), which could often
    (but not always) be deduced from DICOM. Known to BIDS modalities are:
 
    - `anat` - anatomical data.  Might also be collected multiple times across
@@ -53,7 +53,8 @@ where
             (e.g., `_task-memory_run-01`, `_task-oddball_run-02`),
    - `fmap` - field maps. Could be spin-echo sequences with `_dir-`
             (e.g., `fmap_dir-AP`, `fmap_dir-PA`),
-   - `dwi`  - diffusion weighted imaging (also can as well have runs).
+   - `dwi`  - diffusion weighted imaging (also can as well have runs),
+   - `mrs`  - magnetic resonanse spectroscopy (WiP [BEP022](https://docs.google.com/document/d/1pWCb02YNv5W-UZZja24fZrdXLm4X7knXMiZI7E2z7mY))
 
 - `_ses-<SESID>` (optional)
     a session.  Having a single sequence within a study would make that study
@@ -146,3 +147,18 @@ datasets as input, so something like
   
 TODO: convert to containerized example
 TODO: check that it actually works ;)
+
+
+## Samples
+
+### MRS
+
+WiP to define sensible names for MRS sequences. BIDS MRS BEP022 is not yet
+finalized, so we are only self-compliant here
+
+- `svs_GABA_160_rival` -> `mrs_acq-gaba_task-rival`  -- produces 3 measurements
+  - `acq-gaba_task-rival`
+  - `acq-gaba_task-rival_edit-on`   PulseSequenceTiming + PulseSequencePulses + PulseSequenceName into .json
+  - `acq-gaba_task-rival_proc-diff`
+`svs_se_water_rival` -> `mrs_spec-unsup`
+`svs_se_dummy`       -> `mrs_acq-quick16_spec-sup`
