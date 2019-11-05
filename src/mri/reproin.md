@@ -93,6 +93,10 @@ where
 ### Last moment checks/FAQ:
 
 - Functional runs should have `_task-<TASKID>` field defined
+- It is advisable to avoid using sequential `_run-<index>` through out different
+  functional tasks -- use separate sequences of run indices within each task. E.g.
+  `_task-1_run-01`, `_task-1_run-02`, `_task-2_run-01`, `_task-2_run-02` instead of  
+  `_task-1_run-01`, `_task-1_run-02`, `_task-2_run-03`, `_task-2_run-04`.  
 - Do not use `+`, `_` or `-` within SESID, TASKID, ACQLABEL, RUNID,  so we
   could detect "canceled" runs.
 - If run was canceled -- just copy canceled run (with the same index) and re-run
@@ -126,3 +130,19 @@ Probably with use of docker and/or singularity
 [heudiconv-monitor]: https://github.com/nipy/heudiconv/blob/master/heudiconv/cli/monitor.py
 [DBIC]: http://dbic.dartmouth.edu
 [///dbic/QA]: http://datasets.datalad.org/?dir=/dbic/QA
+
+
+## Meta studies
+
+In some cases it might be desired to collect sequences (e.g., localizer runs) from
+different studies.  `heudiconv` with `reproin` heuristic could be used there as well,
+just point to a new dataset (e.g. `localizers`) and specify empty `--locator` to avoid
+re-establishing the original hierarchy.  You could provide dicom tarballs from BIDS
+datasets as input, so something like
+
+  heudiconv -f reproin --locator '' --bids --files \
+    /inbox/BIDS/PI/INV/[0-9]*/sourcedata/sub-*/func/sub-*_task-{ffa,mimetic,ppa,...}*.tgz \
+    -o /inbox/BIDS/PI/INV/localizers
+  
+TODO: convert to containerized example
+TODO: check that it actually works ;)
