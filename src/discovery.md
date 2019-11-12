@@ -47,6 +47,8 @@ TODO
 
 On Debian: `sudo apt-get install krb5-user`
 
+On MacOS with [Homebrew](https://brew.sh/): `brew install krb5`
+
 3. initialize your kerberos token
 
         kinit <NETID>@KIEWIT.DARTMOUTH.EDU
