@@ -31,3 +31,5 @@ ecosystem (in alphabetical order). If you contributed to the DBIC ecosystem and
 your name is not listed, please add it.
 
 -   Yaroslav O. Halchenko 📖📢🔧💬🐛👀
+
+-   Andrew C. Connolly 📖💡✅
