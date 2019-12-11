@@ -48,9 +48,8 @@ nav:
       - Discovery HPC: discovery.md
     - Publishing:
         - Datasets: TODO.md
-        - Papers:
-            - Data descriptor: TODO.md
-            - Study paper(s): TODO.md
+        - Data papers: data-paper.md
+        - Study papers: TODO.md
     - Appendix:
         - Contributors: 99-appendices/01-contributors.md
         - Licenses: 99-appendices/02-licenses.md
