@@ -27,11 +27,9 @@ DBIC - the [Dartmouth Brain Imaging Center](https://dartmouth.edu/dbic/) - is a 
 How do you know that you're a member of the DBIC community? You're here! You know that DBIC exists! You're officially a member of the community. It's THAT easy! Welcome!
 
 Most of our discussions take place here in [GitHub issues](#understanding-issues).
-We also have a [bids-discussion](https://groups.google.com/forum/#!forum/bids-discussion) Google Group, although this is largely now an archive of previous conversations.
+We also have a [mrusers mailing list](http://dbic.dartmouth.edu/mailman/listinfo/mrusers) for general DBIC announcements and discussion.
 
-Moving forward, we encourage all members to contribute here on [GitHub](https://github.com/dbic/handbook) or on the [NeuroStars](https://neurostars.org/tags/bids) Discourse Forum, under the `bids` tag.
-
-To keep on top of new posts, please see this guide for setting your [topic notifications](https://meta.discourse.org/t/discourse-new-user-guide/96331#heading--topic-notifications).
+Moving forward, we encourage all members to contribute here on [GitHub](https://github.com/dbic/handbook).
 
 As a reminder, we expect that all contributions adhere to our [Code of Conduct](CODE_OF_CONDUCT.md).
 
