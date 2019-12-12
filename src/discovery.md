@@ -69,7 +69,7 @@ Now you should be able to just `ssh discovery7` (or `ndoli` -- TODO JH)
 The following instructions allow you to run a Jupyter Notebook on Discovery from 
 your local web browser using an ssh tunnel.
 
-1. Create a Jupyter password on your discovery account
+* Create a Jupyter password on your discovery account
 
 Log onto discovery: `ssh <username>@discovery7.dartmouth.edu`
 
@@ -85,7 +85,7 @@ Verify password:
 [d31548v@discovery7 ~]$
 ```
 
-2. Submit a job to Discovery cluster that starts the Jupyter Notebook server on the cluster
+* Submit a job to Discovery cluster that starts the Jupyter Notebook server on the cluster
 
 Use a text editor to create the new file `jupyter_notebook.pbs`. 
 Cut and paste the following text into the file and save.
@@ -145,7 +145,7 @@ JOBID              USERNAME      STATE PROCS   REMAINING            STARTTIME
 1310001             d31548v    Running     1     9:59:35  Thu Dec  5 16:35:11
 
 1 active job             1 of 2456 processors in use by local jobs (0.04%)
-                          1 of 124 nodes active      (0.81%)
+			  1 of 124 nodes active      (0.81%)
 
 eligible jobs----------------------
 JOBID              USERNAME      STATE PROCS     WCLIMIT            QUEUETIME
@@ -183,11 +183,11 @@ Once the files appear, view the output file:
 ```bash
 [d31548v@discovery7 ~]$ cat Jupyter_notebook.o1310001
 ------------------------- Prologue ----------------------------
-         Started: Thu Dec  5 16:35:20 EST 2019
-          Job ID: 1310001.pearl.hpcc.dartmouth.edu
-         User ID: d31548v
-        Group ID: rc-users
-        Job Name: Jupyter_notebook
+	 Started: Thu Dec  5 16:35:20 EST 2019
+	  Job ID: 1310001.pearl.hpcc.dartmouth.edu
+	 User ID: d31548v
+	Group ID: rc-users
+	Job Name: Jupyter_notebook
  Resources Req d: walltime=10:00:00,nodes=1:ppn=1,neednodes=1:ppn=1
       Queue Name: default
     Account Name: 
@@ -205,7 +205,7 @@ localhost:8254
 This file contains instructions to connect to your Jupyter notebook from your
 local desktop or laptop. 
 
-3. Initiate the [ssh tunnel](https://www.ssh.com/ssh/tunneling/example)
+* Initiate the [ssh tunnel](https://www.ssh.com/ssh/tunneling/example)
 
 Open a terminal on your local machine and paste in the command to create the ssh tunnel:
 
@@ -216,10 +216,10 @@ Open a terminal on your local machine and paste in the command to create the ssh
 
 
 
-4. Open a web browser and start working
+* Open a web browser and start working
 
-Type `localhost:8254` into your browser. You should now be prompted for the password you created
-at the beginning of these instructions. Congratulations!
+	Type `localhost:8254` into your browser. You should now be prompted for the password you created
+	at the beginning of these instructions. Congratulations!
 
 FINAL NOTE ABOUT PORTS:
 
