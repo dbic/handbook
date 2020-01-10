@@ -34,6 +34,7 @@ nav:
         - Overview: mri/overview.md
         - ReproIn naming convention: mri/reproin.md
         - Siemens Console Walkthrough: mri/walkthrough-1.md
+        - Peripherals: mri/peripherals.md
         - MR Safety: mri/safety.md
         - Data access:
             - DICOMs: TODO.md
