@@ -130,12 +130,12 @@ appears nowhere within DICOM precluding its utility for automation
 ![wt1-d.5-endofdescription.png](source/images/walkthrough-1/wt1-d.5-endofdescription.png)
 
 **Do not edit `Study Description`**, unless you really need to and can
-*guarantee consistency.  This location will determine the location of
-*the dataset on the file system within the hierarchy of (DataLad if ran
-*with `--datalad` option) datasets.  Having it this fully automated
-*guarantees that for the next subject/session, data will be placed into
-*the same dataset without the need to specify target location manually,
-*and thus preventing possible human errors.
+guarantee consistency.  This location will determine the location of
+the dataset on the file system within the hierarchy of (DataLad if ran
+with `--datalad` option) datasets.  Having it this fully automated
+guarantees that for the next subject/session, data will be placed into
+the same dataset without the need to specify target location manually,
+and thus preventing possible human errors.
 
 ## Interrupted Scan
 
