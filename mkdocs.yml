@@ -36,9 +36,7 @@ nav:
         - Siemens Console Walkthrough: mri/walkthrough-1.md
         - Peripherals: mri/peripherals.md
         - MR Safety: mri/safety.md
-        - Data access:
-            - DICOMs: TODO.md
-            - BIDS: TODO.md
+        - Data access: mri/dataaccess.md
         - Data processing:
             - QA: TODO.md
             - Preprocessing: TODO.md
