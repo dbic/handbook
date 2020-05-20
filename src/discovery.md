@@ -40,6 +40,7 @@ TODO
 1. modify ~/.ssh/config to have a section like
 
         Host discovery7.hpcc.dartmouth.edu discovery7
+	  User <netid>
           GSSAPIAuthentication yes
           GSSAPIDelegateCredentials yes
 
