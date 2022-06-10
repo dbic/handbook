@@ -23,7 +23,7 @@ Use [datalad install](TODO) command to obtain dataset, and then [datalad get]() 
 obtain specific files.  If you are greedy, add `-r` to get full hierarchy of datasets, and/or `-g`
 to immediately also fetch all data files
   
-    datalad install -s rolando.cns.dartmouth.edu:/inbox/BIDS/dbic/dbic-animals
+    datalad install -s your-login-on-rolando@rolando.cns.dartmouth.edu:/inbox/BIDS/dbic/dbic-animals
     cd dbic-animals
     datalad get -J4 sub-*  # to get only converted data, without tarballs etc
 
@@ -51,6 +51,8 @@ ANNEX_BIN_PATH=/dartfs/rc/lab/D/DBIC/DBIC/archive/git-annex/usr/lib/git-annex.li
 echo $PATH | grep -q "$ANNEX_BIN_PATH" || export PATH="$ANNEX_BIN_PATH:$PATH"
 ```
 
+So whenever you re-login (or open a new `bash`) and type `git annex version` you should get version past above date.
+
 **Step 2: configure git-annex to use custom data protection**
 
 Adjust you global `~/.gitconfig` with the following section
@@ -61,7 +63,15 @@ thawcontent-command = /dartfs/rc/lab/D/DBIC/DBIC/archive/bin-annex/thaw-content 
 freezecontent-command = /dartfs/rc/lab/D/DBIC/DBIC/archive/bin-annex/freeze-content %path
 ```
 
-Now, whenever you `datalad install` data from rolando you should end up in `master` branch.
+which also could be done via running commands
+
+```shell
+git config --global annex.thawcontent-command '/dartfs/rc/lab/D/DBIC/DBIC/archive/bin-annex/thaw-content %path'
+git config --global annex.freezecontent-command = /dartfs/rc/lab/D/DBIC/DBIC/archive/bin-annex/freeze-content %path
+```
+
+Now, after these 2 steps, whenever you `datalad install` data from rolando you should end up in `master` branch.
+If that doesn't happen - file an issue.
 
 ##### Parallel get - multiple passwords
 
