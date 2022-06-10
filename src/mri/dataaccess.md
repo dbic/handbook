@@ -34,6 +34,34 @@ Later upgrades to fetch new data (subjects etc) could be done via
 
 #### Specifics/workarounds
 
+##### Discovery filesystem
+
+Unfortunately the filesystem used on discovery by default does not support smooth git-annex and thus DataLad operation.
+If you use `datalad install` or `datalad clone` as instructed above, you would likely to endup in "adjusted" git-annex branch which would complicate your interactions with the data, etc.
+We recommend to use new feature of git-annex allowing for custom protection of data on discovery.
+For that
+
+**Step 1: make sure you are using recent git-annex**
+
+Make sure that you are using recent (at least as of January 2022) version of git-annex.
+For that you could use the version we provide and just adjust your `~/.bashrc` with the following content:
+
+```shell
+ANNEX_BIN_PATH=/dartfs/rc/lab/D/DBIC/DBIC/archive/git-annex/usr/lib/git-annex.linux/
+echo $PATH | grep -q "$ANNEX_BIN_PATH" || export PATH="$ANNEX_BIN_PATH:$PATH"
+```
+
+**Step 2: configure git-annex to use custom data protection**
+
+Adjust you global `~/.gitconfig` with the following section
+
+```
+[annex]
+thawcontent-command = /dartfs/rc/lab/D/DBIC/DBIC/archive/bin-annex/thaw-content %path
+freezecontent-command = /dartfs/rc/lab/D/DBIC/DBIC/archive/bin-annex/freeze-content %path
+```
+
+Now, whenever you `datalad install` data from rolando you should end up in `master` branch.
 
 ##### Parallel get - multiple passwords
 
