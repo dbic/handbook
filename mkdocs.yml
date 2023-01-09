@@ -1,4 +1,4 @@
-site_name: Dartmouth Brain Imaging Center Handbook vX.X.X-dev
+site_name: Dartmouth Brain Imaging Center Handbook
 theme:
     name: material
     custom_dir: theme_customizations/
