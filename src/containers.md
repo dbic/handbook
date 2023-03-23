@@ -15,7 +15,7 @@ more space on discovery (some containers are large). E.g. to validate
 your BIDS dataset using bids-validator, do
 
     cd path/to/my/bids/dataset
-    singularity run /dartfs/rc/lab/D/DBIC/DBIC/archive/containers/images/bids/bids-validator--1.11.0.sing .
+    singularity run -B $PWD:$PWD /dartfs/rc/lab/D/DBIC/DBIC/archive/containers/images/bids/bids-validator--1.11.0.sing $PWD
 
 ## NeuroDocker
 ## ReproZip
