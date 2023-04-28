@@ -43,7 +43,7 @@ For that
 
 **Step 1: make sure you are using recent git-annex**
 
-Make sure that you are using recent (at least as of January 2022) version of git-annex.
+Make sure that you are using recent (at least as of January 2023) version of git-annex.
 For that you could use the version we provide and just adjust your `~/.bashrc` with the following content:
 
 ```shell
@@ -70,7 +70,13 @@ git config --global annex.thawcontent-command '/dartfs/rc/lab/D/DBIC/DBIC/archiv
 git config --global annex.freezecontent-command = /dartfs/rc/lab/D/DBIC/DBIC/archive/bin-annex/freeze-content %path
 ```
 
-Now, after these 2 steps, whenever you `datalad install` data from rolando you should end up in `master` branch.
+**Step 3: make sure that directory has group ACL to remove children**
+
+It is the [`D` ACE Permission](https://www.osc.edu/book/export/html/4523): if folder lacks it, then `git-annex` will be unable to move read-only file under `.git/annex`.
+So, if you get a "Permission error" while trying to `git annex add` or `datalad save`, you might need to add that to the group permissions.
+Use `/dartfs/rc/lab/D/DBIC/DBIC/archive/bin-annex/fix-dir-group-perm` script with the folder under which you want to create/clone repo to add that `D`.
+
+Now, after these 3 steps, whenever you `datalad install` data from rolando you should end up in `master` branch.
 If that doesn't happen - file an issue.
 
 ##### Parallel get - multiple passwords
