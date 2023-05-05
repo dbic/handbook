@@ -29,6 +29,8 @@ If it comes out empty, please do
 
 while replacing those values with your name and email.
 
+If you are doing it to discovery HPC, please first checkout the next section of this documentation below (Discovery filesystem) on how to configure your git for Discovery's ACL filesystem, unless you know that it is pure POSIX.
+
 Then it is recommended to create a directory for your study first, e.g. `mkdir ID_name` where `ID_name` are the same as on rolando, e.g. `0001_dbic-animals`, and `cd` into it, e.g.:
 
     mkdir 0001_dbic-animals
