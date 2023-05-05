@@ -19,12 +19,28 @@ These directories are also DataLad datasets, so you have two options on how to t
 
 ### DataLad way
 
-Use [datalad install](TODO) command to obtain dataset, and then [datalad get]() to 
+Make sure you have git configured, in that it knows about you.
+If you have output to running `git config user.name` command, then most likely you are all set.
+If it comes out empty, please do
+
+
+    git config --global user.name "First Last"
+    git config --global user.email "someemail@address"
+
+while replacing those values with your name and email.
+
+Then it is recommended to create a directory for your study first, e.g. `mkdir ID_name` where `ID_name` are the same as on rolando, e.g. `0001_dbic-animals`, and `cd` into it, e.g.:
+
+    mkdir 0001_dbic-animals
+    cd 0001_dbic-animals 
+
+Use [datalad install](https://docs.datalad.org/en/stable/generated/man/datalad-install.html) command
+to obtain dataset, and then [datalad get](http://docs.datalad.org/en/stable/generated/man/datalad-get.html) to 
 obtain specific files.  If you are greedy, add `-r` to get full hierarchy of datasets, and/or `-g`
 to immediately also fetch all data files
   
-    datalad install -s your-login-on-rolando@rolando.cns.dartmouth.edu:/inbox/BIDS/dbic/dbic-animals
-    cd dbic-animals
+    datalad install -s your-login-on-rolando@rolando.cns.dartmouth.edu:/inbox/BIDS/dbic/0001_dbic-animals dbic
+    cd dbic
     datalad get -J4 sub-*  # to get only converted data, without tarballs etc
 
 Later upgrades to fetch new data (subjects etc) could be done via 
@@ -67,7 +83,7 @@ which also could be done via running commands
 
 ```shell
 git config --global annex.thawcontent-command '/dartfs/rc/lab/D/DBIC/DBIC/archive/bin-annex/thaw-content %path'
-git config --global annex.freezecontent-command = /dartfs/rc/lab/D/DBIC/DBIC/archive/bin-annex/freeze-content %path
+git config --global annex.freezecontent-command '/dartfs/rc/lab/D/DBIC/DBIC/archive/bin-annex/freeze-content %path'
 ```
 
 **Step 3: make sure that directory has group ACL to remove children**
