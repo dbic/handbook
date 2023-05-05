@@ -47,7 +47,7 @@ to immediately also fetch all data files
 
 Later upgrades to fetch new data (subjects etc) could be done via 
 
-    datalad update --merge -r 
+    datalad update --how merge -r 
 
 
 #### Specifics/workarounds
