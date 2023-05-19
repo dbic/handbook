@@ -30,4 +30,21 @@ Meanwhile, have a look at
 - https://github.com/ReproNim/containers/#a-typical-workflow 
 - a bit too convoluted ATM example with either `datalad run` or `reproman run` for
   scheduling parallel execution across cluster: https://github.com/ReproNim/reproman/pull/438
-- and possible future answers on https://neurostars.org/t/using-fmriprep-with-datalad-containers-run/5327 
+- and possible future answers on
+  https://neurostars.org/t/using-fmriprep-with-datalad-containers-run/5327
+
+
+## How to view mriqc/fmriprep/etc DataLad'ified results in a browser
+
+**The problem**: web browser de-references symlinks, which leads `.html` into a `.git/annex/objects` subfolder and thus makes it impossible to see the images.
+
+![datalad-fmriprep-brokenview_min.jpg](images/datalad-fmriprep-brokenview_min.jpg)
+
+To overcome this, start a simple web server, e.g. as provided by Python itself, and navigate to the file of interest:
+
+- Run this line of code on local directory (e.g., where you have mounted discovery directory, or have a local clone with data fetched): `python -m http.server 8081`
+- Copy the URL it prints out (typically  http://0.0.0.0:8081/) into your web browser address bar
+- Now you should be able to access HTML outputs with embedded images at that address -- just navigate to .html file of interest and open it.
+
+![datalad-fmriprep-goodview-terminal_min.jpg](images/datalad-fmriprep-goodview-terminal_min.jpg)
+![datalad-fmriprep-goodview_min.jpg](images/datalad-fmriprep-goodview_min.jpg)
