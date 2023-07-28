@@ -17,7 +17,6 @@ plugins:
 docs_dir: 'src'
 use_directory_urls: false
 nav:
-    - Introduction: 01-introduction.md
     - Useful basics:
       - Shell: shell.md
       - SSH: TODO.md
