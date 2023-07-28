@@ -46,5 +46,40 @@ To overcome this, start a simple web server, e.g. as provided by Python itself, 
 - Copy the URL it prints out (typically  http://0.0.0.0:8081/) into your web browser address bar
 - Now you should be able to access HTML outputs with embedded images at that address -- just navigate to .html file of interest and open it.
 
+### DataLad way
+
+Make sure you have git configured, in that it knows about you.
+If you have output to running `git config user.name` command, then most likely you are all set.
+If it comes out empty, please do
+
+
+    git config --global user.name "First Last"
+    git config --global user.email "someemail@address"
+
+while replacing those values with your name and email.
+
+If you are doing it to discovery HPC, please first checkout the next section of this documentation below (Discovery filesystem) on how to configure your git for Discovery's ACL filesystem, unless you know that it is pure POSIX.
+
+Then it is recommended to create a directory for your study first, e.g. `mkdir ID_name` where `ID_name` are the same as on rolando, e.g. `0001_dbic-animals`, and `cd` into it, e.g.:
+
+    mkdir 0001_dbic-animals
+    cd 0001_dbic-animals 
+
+Use [datalad install](https://docs.datalad.org/en/stable/generated/man/datalad-install.html) command
+to obtain dataset, and then [datalad get](http://docs.datalad.org/en/stable/generated/man/datalad-get.html) to 
+obtain specific files.  If you are greedy, add `-r` to get full hierarchy of datasets, and/or `-g`
+to immediately also fetch all data files
+  
+    datalad install -s your-login-on-rolando@rolando.cns.dartmouth.edu:/inbox/BIDS/dbic/0001_dbic-animals dbic
+    cd dbic
+    datalad get -J4 sub-*  # to get only converted data, without tarballs etc
+
+Later upgrades to fetch new data (subjects etc) could be done via 
+
+    datalad update --how merge -r 
+
+
+
+
 ![datalad-fmriprep-goodview-terminal_min.jpg](images/datalad-fmriprep-goodview-terminal_min.jpg)
 ![datalad-fmriprep-goodview_min.jpg](images/datalad-fmriprep-goodview_min.jpg)

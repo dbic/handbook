@@ -17,11 +17,11 @@ plugins:
 docs_dir: 'src'
 use_directory_urls: false
 nav:
-    - Useful basics:
-      - Shell: shell.md
+    - Fundamentals:
+      - Shell: basics/shell.md
       - SSH: TODO.md
-      - Containers: containers.md
-      - DataLad: datalad.md
+      - Containers: basics/containers.md
+      - DataLad: basics/datalad.md
       - PyBIDS: TODO.md
     - A new study:
         - Policies & procedures: https://www.dartmouth.edu/dbic/
@@ -43,10 +43,10 @@ nav:
     - EEG: TODO.md
     - MRS: TODO.md
     - Computing resources:
-      - Discovery HPC: discovery.md
+      - Discovery HPC: computing/discovery.md
     - Publishing:
         - Datasets: TODO.md
-        - Data papers: data-paper.md
+        - Data papers: publishing/data-paper.md
         - Study papers: TODO.md
     - Appendix:
         - Contributors: 99-appendices/01-contributors.md
@@ -54,5 +54,3 @@ nav:
     - Additional resources: additional_resources.md
     - Changelog: CHANGES.md
     - Contributing: CONTRIBUTING.md
-    - DBIC website: http://dartmouth.edu/dbic
-    - DBIC GitHub: http://github.com/dbic
