@@ -19,7 +19,7 @@ use_directory_urls: false
 nav:
     - Introduction: 01-introduction.md
     - Useful basics:
-      - Shell: TODO.md
+      - Shell: shell.md
       - SSH: TODO.md
       - Containers: containers.md
       - DataLad: datalad.md
