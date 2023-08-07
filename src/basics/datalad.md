@@ -75,8 +75,5 @@ Later upgrades to fetch new data (subjects etc) could be done via
 
     datalad update --how merge -r 
 
-
-
-
 ![datalad-fmriprep-goodview-terminal_min.jpg](images/datalad-fmriprep-goodview-terminal_min.jpg)
 ![datalad-fmriprep-goodview_min.jpg](images/datalad-fmriprep-goodview_min.jpg)
