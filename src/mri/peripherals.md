@@ -30,12 +30,9 @@ TODO
 
 #### Notes
 
-- make sure enabling recording of the absolute timestamp (TODO: instructions),
-  so they later could be automagically sliced into BIDS
-- make sure that collection box uses NTP to keep its clock "in sync" with the
-  absolute time of the planet
-- TODO: think about introducing into data some "synchronization signature" to
-  provide guarantee/QA of correct temporal alignment with MR data
+- make sure enabling recording of the absolute timestamp (TODO: instructions), so they later could be automagically sliced into BIDS
+- make sure that collection box uses NTP to keep its clock "in sync" with the absolute time of the planet
+- TODO: think about introducing into data some "synchronization signature" to provide guarantee/QA of correct temporal alignment with MR data
 
 ### Tools
 

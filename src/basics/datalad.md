@@ -1,7 +1,6 @@
 # DataLad
 
-The DataLad Handbook at [http://handbook.datalad.org](http://handbook.datalad.org)
-is the ultimate introduction into DataLad. 
+The DataLad Handbook at [http://handbook.datalad.org](http://handbook.datalad.org) is the ultimate introduction into DataLad. 
 
 ## An example of sample analysis using DataLad & containers
  

@@ -11,9 +11,7 @@ You can `scp` or `rsync` them to your local storage.
 
 ## BIDS
 
-At the moment, upon request from a lab member to [Yaroslav Halchenko](mailto:yoh@dartmouth.edu), 
-data is converted from DICOMs into BIDS within the directories hierarchy under `/inbox/BIDS`, following
-convention described in ReproIn section (TODO: make into a reference).
+At the moment, upon request from a lab member to [Yaroslav Halchenko](mailto:yoh@dartmouth.edu), data is converted from DICOMs into BIDS within the directories hierarchy under `/inbox/BIDS`, following convention described in ReproIn section (TODO: make into a reference).
 
 These directories are also DataLad datasets, so you have two options on how to transfer them:
 
@@ -24,7 +22,8 @@ These directories are also DataLad datasets, so you have two options on how to t
 Unfortunately the filesystem used on discovery by default does not support smooth git-annex and thus DataLad operation.
 If you use `datalad install` or `datalad clone` as instructed above, you would likely to endup in "adjusted" git-annex branch which would complicate your interactions with the data, etc.
 We recommend to use new feature of git-annex allowing for custom protection of data on discovery.
-For that
+
+For that:
 
 **Step 1: make sure you are using recent git-annex**
 
@@ -66,8 +65,7 @@ If that doesn't happen - file an issue.
 
 ##### Parallel get - multiple passwords
 
-If you are `get`ing data to discovery, to non-POSIX compliant filesystem, then you must provide
-option `-J1` to `datalad get` to prevent parallel downloads and multiple password prompts.
+If you are `get`ing data to discovery, to non-POSIX compliant filesystem, then you must provide option `-J1` to `datalad get` to prevent parallel downloads and multiple password prompts.
 
 ##### Reckless clone still wants to access rolando
 
@@ -95,6 +93,5 @@ yohtest@rolando.cns.dartmouth.edu's password:
         rolando.cns.dartmouth.edu:/inbox/BIDS/dbic/dbic-animals dbic-animals
     
     
-You could add `--exclude=sourcedata` and/or `--exclude=derivatives` to exclude
-folders with original DICOMS and possible derivatives (fmriqc, etc).
+You could add `--exclude=sourcedata` and/or `--exclude=derivatives` to exclude folders with original DICOMS and possible derivatives (fmriqc, etc).
     
