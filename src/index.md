@@ -14,6 +14,7 @@ If there's technology that many of you need to learn, add it here.
 If something is difficult or impossible, add it here.
 
 Consider this handbook your gift the the next generation of unfortunate researchers who have just been smited by 1 million tools to learn.
+TODO(link to CONTRIBUTING.md)
 
 ## About
 
