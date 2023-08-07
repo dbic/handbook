@@ -5,8 +5,8 @@ project, and ideally using datalad-container extension.  See
 https://github.com/ReproNim/containers#a-typical-yoda-workflow
 for more information on how it should typically be used.
 
-TODO: prepare local (discovery) specific instructions since we have a local clone with some
-images/versions already available.
+If you are using Dartmouth's Discovery cluster, please see (TODO
+link-to-discovery-guide)
 
 Besides using that collection via datalad, you can use them directly for the
 images/versions we already prefetched (if any is missing, please let us know).

@@ -30,6 +30,8 @@ environment, its permissions now will be ACLed and you will not be able to do
 anything with that file until you use `nfs4_setfacl -e filename` to interactive 
 remove "ace"s from the file permissions. (TODO: JH example)
 
+TODO
+https://rc.dartmouth.edu/wp-content/uploads/2019/04/Intro_to_Cluster.pdf
 
 ## POSIXy filesystem(s) for git-annex/DataLad inspired
 

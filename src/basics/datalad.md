@@ -5,7 +5,7 @@ is the ultimate introduction into DataLad.
 
 ## An example of sample analysis using DataLad & containers
  
-This is a WiP example on how to organize your study as DataLad dataset and
+This is an example on how to organize your study as DataLad dataset and
 use [datalad-container](http://docs.datalad.org/projects/container/en/latest/index.html)
 extension to facilitate efficient and reproducible research:
  
@@ -22,8 +22,6 @@ datalad install -d . -s rolando.cns.dartmouth.edu:/inbox/BIDS/Haxby/Sam/1021_act
 # Getting only a sample data (1 subject) for demonstration here
 datalad get bids/sub-sid000005
 ```
-
-TODO: finish
 
 Meanwhile, have a look at 
 
