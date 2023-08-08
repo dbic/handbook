@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to DBIC! Here, you'll find the documentation you'll need to complete your research here at Dartmouth.
+Welcome to [DBIC][dbic]! Here, you'll find the documentation you'll need to complete your research here at Dartmouth.
 As it turns out, neuroscience is hard, you will need many tools to collect and manage your data (which might be huge!). 
 Neuroscience also requires a LOT of calculation and you may need to use more powerful compute resources.
 It is likely you will need to learn some foundational skills as a Linux Terminal user, and you will likely need to interact with Dartmouth's supercomputing cluser, "Discovery". 
@@ -18,7 +18,7 @@ TODO(link to CONTRIBUTING.md)
 
 ## About
 
-The [Dartmouth Brain Imaging Center (DBIC)](https://dartmouth.edu/dbic) is a research resource that is provided by Dartmouth College to all brain researchers in the Dartmouth community.  Please visit [DBIC website](https://www.dartmouth.edu/dbic/) for more information.
+The [Dartmouth Brain Imaging Center (DBIC)][dbic] is a research resource that is provided by Dartmouth College to all brain researchers in the Dartmouth community.  Please visit [DBIC website](https://www.dartmouth.edu/dbic/) for more information.
 
 
 ## Acknowledgements
@@ -27,3 +27,5 @@ The documentation framework and some materials for this handbook are based on [b
 We are grateful to all [BIDS Specification Contributors](https://github.com/bids-standard/bids-specification/blob/master/src/99-appendices/01-contributors.md)!
 
 Contributors to this handbook are listed in [Contributors appendix](99-appendices/01-contributors.md). 
+
+[dbic]: https://dartmouth.edu/dbic
