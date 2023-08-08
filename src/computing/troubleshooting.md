@@ -7,4 +7,8 @@ If you drag&drop a file from your Windows OS machine into the mounted POSIX envi
 TODO https://github.com/con/opfvta-replication-2023/issues/33
 TODO https://rc.dartmouth.edu/wp-content/uploads/2019/04/Intro_to_Cluster.pdf
 
+## TODO permissions
+
+nfs4_setfacl -a 'A::EVERYONE@:rwaDdxtTnNcCoy' 1 -R broke-old
+
 

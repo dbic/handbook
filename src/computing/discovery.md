@@ -20,7 +20,16 @@ home limited 50gigs
 
 For large datasets, use /dartfs/rc/lab/D/DBIC/DBIC/
 
-
+f0066m7@ndoli chymera]$ ls
+[f0066m7@ndoli chymera]$ echo nfs4_setfacl -a 'A:fd:f0066m7@KIEWIT.DARTMOUTH.E
+nfs4_setfacl -a A:fd:f0066m7@KIEWIT.DARTMOUTH.EDU:rwatcy 1 .
+[f0066m7@ndoli chymera]$ echo nfs4_setfacl -a 'D::f0066m7@KIEWIT.DARTMOUTH.EDU
+nfs4_setfacl -a D::f0066m7@KIEWIT.DARTMOUTH.EDU:d 1 .
+[f0066m7@ndoli chymera]$ ls
+[f0066m7@ndoli chymera]$ pwd
+/dartfs/rc/lab/D/DBIC/DBIC/CON/chymera
+[f0066m7@ndoli chymera]$ datalad install -r git@github.com:con/opfvta-replicat
+[INFO   ] Cloning git@github.com:c
 
 ## Installing Software
 
