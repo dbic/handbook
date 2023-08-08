@@ -6,6 +6,15 @@ This section provides additional, typically DBIC users specific information and 
 
 ## Getting Access
 
+## Tour
+
+x01 s01 ndoli
+
+export TERM=xterm
+
+home limited 50gigs
+
+
 ## Installing Software
 
 ### Containers
