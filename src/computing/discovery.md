@@ -8,11 +8,18 @@ This section provides additional, typically DBIC users specific information and 
 
 ## Tour
 
+
+(TODO, this is just a list for now, to indicate the order that a new
+user will encounter these)
+
 x01 s01 ndoli
 
 export TERM=xterm
 
 home limited 50gigs
+
+For large datasets, use /dartfs/rc/lab/D/DBIC/DBIC/
+
 
 
 ## Installing Software
