@@ -1,22 +1,18 @@
 # ReproIn Convention
 
-ReproIn project is a part of the [ReproNim Center](http://ReproNim.org)
-suite of tools and frameworks, and was established when DBIC obtained a new
-Siemens 3T Scanner.   ReproIn consists of two parts: a specification on how to 
-organize and name exam cards in the scanner, and a tool to convert acquired
-DICOMs to BIDS layout.
+ReproIn project is a part of the [ReproNim Center](http://ReproNim.org) suite of tools and frameworks, and was established when DBIC obtained a new Siemens 3T Scanner.
+ReproIn consists of two parts: a specification on how to organize and name exam cards in the scanner, and a tool to convert acquired DICOMs to BIDS layout.
 
 
 ## Specification
 
-The header of the [ReproIn heuristic] file shipped within [HeuDiConv] describes details of the
-specification on how to organize and name study sequences at MR console.  Currently it is
+The header of the [ReproIn heuristic] file shipped within [HeuDiConv] describes details of the specification on how to organize and name study sequences at MR console.
+
+Currently it is:
 
 ### Sequence naming on the scanner console
 
-Sequence names on the scanner must follow this specification to avoid manual
-conversion/handling (split in multiple lines only for visualization, there 
-should be no spaces or new lines in the name):
+Sequence names on the scanner must follow this specification to avoid manual conversion/handling (split in multiple lines only for visualization, there should be no spaces or new lines in the name):
 
     [PREFIX:][WIP ]<seqtype[-label]>[_ses-<SESID>]
        [_task-<TASKID>][_acq-<ACQLABEL>][_run-<RUNID>][_dir-<DIR>][<more BIDS>]
