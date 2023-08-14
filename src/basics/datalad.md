@@ -35,7 +35,7 @@ Meanwhile, have a look at
 
 **The problem**: web browser de-references symlinks, which leads `.html` into a `.git/annex/objects` subfolder and thus makes it impossible to see the images.
 
-![datalad-fmriprep-brokenview_min.jpg](images/datalad-fmriprep-brokenview_min.jpg)
+![datalad-fmriprep-brokenview_min.jpg](../images/datalad-fmriprep-brokenview_min.jpg)
 
 To overcome this, start a simple web server, e.g. as provided by Python itself, and navigate to the file of interest:
 
@@ -75,5 +75,5 @@ Later upgrades to fetch new data (subjects etc) could be done via
 
     datalad update --how merge -r 
 
-![datalad-fmriprep-goodview-terminal_min.jpg](images/datalad-fmriprep-goodview-terminal_min.jpg)
-![datalad-fmriprep-goodview_min.jpg](images/datalad-fmriprep-goodview_min.jpg)
+![datalad-fmriprep-goodview-terminal_min.jpg](../images/datalad-fmriprep-goodview-terminal_min.jpg)
+![datalad-fmriprep-goodview_min.jpg](../images/datalad-fmriprep-goodview_min.jpg)
