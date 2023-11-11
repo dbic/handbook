@@ -34,6 +34,10 @@ nfs4_setfacl -a D::f0066m7@KIEWIT.DARTMOUTH.EDU:d 1 .
 ## Installing Software
 
 ### Containers
+
+Notes for why and how to use containers on Discovery can be found in the
+[Research ITC containers repo](https://git.dartmouth.edu/research-itc-public/containers-for-hpc/).
+
 ### Conda
 ### "modules"
 
