@@ -6,32 +6,41 @@ This section provides additional, typically DBIC users specific information and 
 
 ## Getting Access
 
-## Tour
+## MUST KNOWs
 
+- Please be considerate about the nodes you are using. When you login, you
+  are on a login-node, but no work should be done here! Instead, use an interactive node `x01`, scheduling node, `s01`, or if you have permission, the fancy IT node `ndoli`.
+- Home dir limited 50gigs for large datasets, use `/dartfs/rc/lab/D/DBIC/DBIC/`
 
-(TODO, this is just a list for now, to indicate the order that a new
-user will encounter these)
+## Recommended .bashrc
 
-x01 s01 ndoli
+```
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+# User specific aliases and functions
+
+# Install conda
+source /optnfs/common/miniconda3/etc/profile.d/conda.sh
+
+# use DBIC-installed git-annex
+# https://dbic-handbook.readthedocs.io/en/latest/mri/dataaccess.html#discovery-filesystem
+ANNEX_BIN_PATH=/dartfs/rc/lab/D/DBIC/DBIC/archive/git-annex/usr/lib/git-annex.linux/
+echo $PATH | grep -q "$ANNEX_BIN_PATH" || export PATH="$ANNEX_BIN_PATH:$PATH"
 
 export TERM=xterm
+export EDITOR=vim
 
-home limited 50gigs
-
-For large datasets, use /dartfs/rc/lab/D/DBIC/DBIC/
-
-f0066m7@ndoli chymera]$ ls
-[f0066m7@ndoli chymera]$ echo nfs4_setfacl -a 'A:fd:f0066m7@KIEWIT.DARTMOUTH.E
-nfs4_setfacl -a A:fd:f0066m7@KIEWIT.DARTMOUTH.EDU:rwatcy 1 .
-[f0066m7@ndoli chymera]$ echo nfs4_setfacl -a 'D::f0066m7@KIEWIT.DARTMOUTH.EDU
-nfs4_setfacl -a D::f0066m7@KIEWIT.DARTMOUTH.EDU:d 1 .
-[f0066m7@ndoli chymera]$ ls
-[f0066m7@ndoli chymera]$ pwd
-/dartfs/rc/lab/D/DBIC/DBIC/CON/chymera
-[f0066m7@ndoli chymera]$ datalad install -r git@github.com:con/opfvta-replicat
-[INFO   ] Cloning git@github.com:c
+alias dog="pygmentize -g"
+```
 
 ## Installing Software
+
+Make sure `datalad --version` > 0.19.3
 
 ### Containers
 
