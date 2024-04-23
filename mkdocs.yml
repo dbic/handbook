@@ -32,6 +32,7 @@ nav:
     - MRI:
         - Overview: mri/overview.md
         - ReproIn naming convention: mri/reproin.md
+        - ReproIn naming helper: https://npacore.github.io/reproin-namer/#
         - Siemens Console Walkthrough: mri/walkthrough-1.md
         - Peripherals: mri/peripherals.md
         - MR Safety: mri/safety.md
