@@ -138,4 +138,4 @@ To view ACLs the standard command is `getfacl`, but on NFS4 fileystems (such as 
 ### ACL Pro tips:
 
 - The local command `listADgroup` can provide a listing of group members in any ACL group by executing an Active Directory query (this is a Python wrapper that does an LDAP lookup and formats it, along with extra information about each member)
-- Refer to Research Computing docs for complete details --- [this doc](https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=88459) on DartFS lab permissions is a good starting point (searching inside of [service.dartmouth.edu](service.dartmouth.edu) for "DartFS permissions" will show a few other locally-generated documents)
+- Refer to Research Computing docs for complete details --- [this doc](https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=88459) on DartFS lab permissions is a good starting point (searching inside of [services.dartmouth.edu](https://services.dartmouth.edu) for "DartFS permissions" will show a few other locally-generated documents)
