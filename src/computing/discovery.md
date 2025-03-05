@@ -6,11 +6,13 @@ This section provides additional, typically DBIC users specific information and 
 
 ## Getting Access
 
+- See the [Research Computing page on cluster access](https://rc.dartmouth.edu/discovery-overview/accessing-the-cluster/)
+
 ## MUST KNOWs
 
 - Please be considerate about the nodes you are using. When you login, you
   are on a login-node, but no work should be done here! Instead, use an interactive node `x01`, scheduling node, `s01`, or if you have permission, the fancy IT node `ndoli`.
-- Home dir limited 50gigs for large datasets, use `/dartfs/rc/lab/D/DBIC/DBIC/`
+- Home dirs are limited to 50 GB storage; for large datasets, use `/dartfs/rc/lab/D/DBIC/DBIC/`
 
 ## Recommended .bashrc
 
@@ -108,6 +110,8 @@ git config --global annex.freezecontent-command '/dartfs/rc/lab/D/DBIC/DBIC/arch
 
 **Step 3: make sure that directory has group ACL to remove children**
 
+(see also the section below on "ACL"s for more background)
+
 It is the [`D` ACE Permission](https://www.osc.edu/book/export/html/4523): if folder lacks it, then `git-annex` will be unable to move read-only file under `.git/annex`.
 So, if you get a "Permission error" while trying to `git annex add` or `datalad save`, you might need to add that to the group permissions.
 Use `/dartfs/rc/lab/D/DBIC/DBIC/archive/bin-annex/fix-dir-group-perm` script with the folder under which you want to create/clone repo to add that `D`.
@@ -118,3 +122,20 @@ If that doesn't happen - file an issue.
 ##### Parallel get - multiple passwords
 
 If you are `get`ing data to discovery, to non-POSIX compliant filesystem, then you must provide option `-J1` to `datalad get` to prevent parallel downloads and multiple password prompts.
+
+## About File/Directory Permissions and ACLs
+
+The traditional/legacy permission structure on Linux is a "user-group-other" triple, with three permission settings for each: "read-write-execute" (coded as rwx). If you run `ls -l` on a file or directory, this is the core of what you see on the left, e.g. `rwxrwx---` would indicate that both user and group (both also specified in the `ls -l` "long" output) have full "read-write-execute" permissions, but others have none.
+
+However, filesytems (including the DartFS filesyste on Discovery) can use "access control lists" (ACLs) to provide an alternate means of permission settings --- and ACLs can render the basic permission listing incomplete, if not incorrect (or at least capable of misleading). Here are key points:
+
+- When an ACL is present there is a `+` on the `ls -l` permissions block
+- ACLs allow for more than one group to have permissions associated with a file or directory
+- On Discovery the `ls -l` output will show `rwx` in the legacy group permission bits if **any** group has `rwx`, not specifically the "primary" group listed (making group + group permissions combo shown potentially "wrong")
+
+To view ACLs the standard command is `getfacl`, but on NFS4 fileystems (such as DartFS) the right version of that is `nfs4_getfacl`... and really the best option on Discovery is the locally provided wrapper `listacl`. 
+
+### ACL Pro tips:
+
+- The local command `listADgroup` can provide a listing of group members in any ACL group by executing an Active Directory query (this is a Python wrapper that does an LDAP lookup and formats it, along with extra information about each member)
+- Refer to Research Computing docs for complete details --- [this doc](https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=88459) on DartFS lab permissions is a good starting point (searching inside of [services.dartmouth.edu](https://services.dartmouth.edu) for "DartFS permissions" will show a few other locally-generated documents)
