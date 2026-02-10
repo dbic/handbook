@@ -3,13 +3,15 @@
 
 1. modify ~/.ssh/config to have a section like:
 
-        Host discovery7.hpcc.dartmouth.edu discovery7
-	      User <netid>
+        Host discovery.dartmouth.edu discovery
+          HostName discovery.dartmouth.edu
+          User <netid>
           GSSAPIAuthentication yes
           GSSAPIDelegateCredentials yes
 
 2. install kerberos client utilities:
 
+     - on Fedora: `sudo dnf install krb5-workstation`
      - on Debian: `sudo apt-get install krb5-user`
      - on MacOS with [Homebrew](https://brew.sh/): `brew install krb5`
 
