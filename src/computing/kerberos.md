@@ -3,18 +3,16 @@
 
 1. modify ~/.ssh/config to have a section like:
 
-        Host discovery.dartmouth.edu discovery
+        Host discovery.dartmouth.edu ndoli.dartmouth.edu
+          User <netid>
+          GSSAPIAuthentication yes
+          GSSAPIDelegateCredentials yes
+      
+        Host discovery
           HostName discovery.dartmouth.edu
-          User <netid>
-          GSSAPIAuthentication yes
-          GSSAPIDelegateCredentials yes
-
-        Host ndoli ndoli.dartmouth.edu
+      
+        Host ndoli
           HostName ndoli.dartmouth.edu
-          User <netid>
-          GSSAPIAuthentication yes
-          GSSAPIDelegateCredentials yes
-
 
 2. install kerberos client utilities:
 
