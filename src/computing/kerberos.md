@@ -9,6 +9,13 @@
           GSSAPIAuthentication yes
           GSSAPIDelegateCredentials yes
 
+        Host ndoli ndoli.dartmouth.edu
+          HostName ndoli.dartmouth.edu
+          User <netid>
+          GSSAPIAuthentication yes
+          GSSAPIDelegateCredentials yes
+
+
 2. install kerberos client utilities:
 
      - on Fedora: `sudo dnf install krb5-workstation`
@@ -28,5 +35,4 @@ It will be refreshed for up to 30 days.
 
 TODO: make it even more sophisticated (auto-updated)
 
-Now you should be able to just `ssh discovery7` (or `ndoli` -- TODO JH)
-
+Now you should be able to just `ssh discovery` or `ssh ndoli`
