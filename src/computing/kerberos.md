@@ -3,13 +3,20 @@
 
 1. modify ~/.ssh/config to have a section like:
 
-        Host discovery7.hpcc.dartmouth.edu discovery7
-	      User <netid>
+        Host discovery.dartmouth.edu ndoli.dartmouth.edu
+          User <netid>
           GSSAPIAuthentication yes
           GSSAPIDelegateCredentials yes
+      
+        Host discovery
+          HostName discovery.dartmouth.edu
+      
+        Host ndoli
+          HostName ndoli.dartmouth.edu
 
 2. install kerberos client utilities:
 
+     - on Fedora: `sudo dnf install krb5-workstation`
      - on Debian: `sudo apt-get install krb5-user`
      - on MacOS with [Homebrew](https://brew.sh/): `brew install krb5`
 
@@ -26,5 +33,4 @@ It will be refreshed for up to 30 days.
 
 TODO: make it even more sophisticated (auto-updated)
 
-Now you should be able to just `ssh discovery7` (or `ndoli` -- TODO JH)
-
+Now you should be able to just `ssh discovery` or `ssh ndoli`
