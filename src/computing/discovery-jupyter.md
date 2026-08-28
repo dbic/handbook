@@ -1,10 +1,10 @@
-## Using Jupyter Notebook on Discovery
+# Using Jupyter Notebook on Discovery
 
 The following instructions allow you to run a Jupyter Notebook on Discovery from your local web browser using an ssh tunnel.
 
-* Create a Jupyter password on your discovery account
+## 1. Create a Jupyter password on your Discovery account
 
-Log onto discovery: `ssh <username>@discovery7.dartmouth.edu`
+Log onto Discovery: `ssh <username>@discovery7.dartmouth.edu`
 
 Create a configuration directory and password for Jupyter Notebook:
 
@@ -18,10 +18,10 @@ Verify password:
 [d31548v@discovery7 ~]$
 ```
 
-* Submit a job to Discovery cluster that starts the Jupyter Notebook server on the cluster
+## 2. Submit a job that starts the Jupyter Notebook server on the cluster
 
-Use a text editor to create the new file `jupyter_notebook.pbs`. 
-Cut and paste the following text into the file and save.
+Use a text editor to create the new file `jupyter_notebook.pbs`.
+Cut and paste the following text into the file and save it.
 
 ```console
 #!/bin/bash -l
@@ -64,7 +64,7 @@ Now submit the job to the cluster:
 [d31548v@discovery7 ~]$
 ```
 
-Note the number of the submitted job `1310001`. This is the unique Job ID for the process running your Jupyter Notebook.
+Note the number of the submitted job, `1310001`.  This is the unique job ID for the process running your Jupyter Notebook.
 You can list all of your jobs using the `myjobs` command, which will list all of your currently submitted jobs, including this one.
 For example:
 
@@ -131,9 +131,9 @@ localhost:8254
 
 ```
 
-This file contains instructions to connect to your Jupyter notebook from your local desktop or laptop. 
+This file contains instructions to connect to your Jupyter Notebook from your local desktop or laptop.
 
-* Initiate the [ssh tunnel](https://www.ssh.com/ssh/tunneling/example)
+## 3. Initiate the [ssh tunnel](https://www.ssh.com/ssh/tunneling/example)
 
 Open a terminal on your local machine and paste in the command to create the ssh tunnel:
 
@@ -142,14 +142,13 @@ Open a terminal on your local machine and paste in the command to create the ssh
 [andy@MyLaptop ~]$
 ```
 
+## 4. Open a web browser and start working
 
+Type `localhost:8254` into your browser.
+You should now be prompted for the password you created at the beginning of these instructions.
+Congratulations!
 
-* Open a web browser and start working
-
-	Type `localhost:8254` into your browser. You should now be prompted for the password you created
-	at the beginning of these instructions. Congratulations!
-
-FINAL NOTE ABOUT PORTS:
+## Final note about ports
 
 The submission script provided here chooses a random port number between 8000 and 8999.
 This is somewhat arbitrary as any port number above 1024 should be a legal choice for creating an ssh tunnel, as long as that port is not otherwise in use.
@@ -157,9 +156,9 @@ The relevant line in the script is:
 
 ```bash
 port=`echo $(( 8000 + RANDOM % 1000 ))`
-``` 
+```
 
-In order to specify a specific port (for example 8888), simply replace this line with
+In order to request a specific port (for example 8888), simply replace this line with
 
 ```bash
 port=8888
@@ -170,13 +169,13 @@ It is also possible that you have an old ssh tunnel running on your local machin
 You can avoid this by killing old or stale jobs in order to free up ports.
 
 To kill jobs on the Discovery cluster use `qdel`.
-For example to kill the job running the server on Discovery created in this tutorial with job ID 1310001, type:
+For example, to kill the job with ID 1310001 that runs the server created in this tutorial, type:
 
 ```bash
 [d31548v@discovery7 ~]$ qdel 1310001
 ```
 
-On your local machine, first find the process id (PID) for the process running the ssh tunnel, for example:
+On your local machine, first find the process ID (PID) of the process running the ssh tunnel, for example:
 
 ```bash
 [andy@MyLaptop ~]$ ps -e | grep 8254

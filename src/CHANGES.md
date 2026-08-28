@@ -1,3 +1,3 @@
-Changelog
+# Changelog
 
-[Unreleased](https://github.com/dbic/handbook/tree/HEAD)
+## [Unreleased](https://github.com/dbic/handbook/tree/HEAD)

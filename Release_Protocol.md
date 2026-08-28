@@ -8,7 +8,7 @@ The protocol assumes that you have a [fork](https://help.github.com/en/articles/
 of the dbic/handbook repository and have [cloned](https://help.github.com/en/articles/cloning-a-repository)
 your fork locally to a directory called `handbook`.
 
-### 1. Fetch the latest version of the [master branch of the DBIC-handbook](https://github.com/dbic/handbook/tree/master)
+### 1. Fetch the latest version of the [master branch of the DBIC handbook](https://github.com/dbic/handbook/tree/master)
 
 You should have a remote, which we will call `upstream`, for the
 [dbic/handbook](https://github.com/dbic/handbook/)
@@ -45,7 +45,7 @@ the link.
 
 ```Diff
 - ## Unreleased
-+ ## [v1.2.0](https://dbic.readthedocs.io/en/v1.2.0/) (2019-03-04)
++ ## [v1.2.0](https://dbic-handbook.readthedocs.io/en/v1.2.0/) (2019-03-04)
 ```
 
 The date can be changed or added later, so accurate prediction is not necessary.
@@ -57,7 +57,8 @@ If the version preceding the `-dev` is not the target version, update the versio
 In the figure below, we update `v1.2.0-dev` to `v1.2.0`.
 ![dev-to-stable](release_images/site_name_release_1.2dev-1.2.png "dev-to-stable")
 
-Note: this will make our continuous integration ([CircleCI](https://circleci.com/)) fail. This fails because the URL of the new ReadTheDocs rendering has not been generated at this time. It will be generated once the GitHub release has been completed. 
+Note: this will make the scheduled external link check fail, because the URL of the new Read the Docs rendering has not been generated at this time.
+It will be generated once the GitHub release has been completed.
 
 Synchronize the [Contributors appendix](https://github.com/dbic/handbook/blob/master/src/99-appendices/01-contributors.md)
 with the [Contributors wiki page](https://github.com/dbic/handbook/wiki/Contributors)
@@ -67,7 +68,7 @@ Be sure not to remove credits if both have been edited.
 ### 3. Commit changes and push to upstream
 
 By pushing `rel/` branches to the main repository, the chances of continuous integration
-discrepancies is reduced.
+discrepancies are reduced.
 
 ```Shell
 $ git add src/CHANGES.md mkdocs.yml src/99-appendices/01-contributors.md
@@ -76,6 +77,7 @@ $ git push -u upstream rel/1.2.0
 ```
 
 ### 4. Open a pull request against the master branch
+
 Important note: The pull request title **must** be named "REL: vX.Y.Z" (*e.g.*, "REL: v1.2.0").
 
 **This will open a period of discussion for 5 business days regarding if we are ready to release.**
@@ -92,13 +94,13 @@ For example, if an inconsistency is noticed, a PR might be necessary to resolve 
 Merging an entire BEP would likely lead to greater uncertainty about self-consistency, and should
 probably wait.
 
-If `master` is updated, it should be merged into the `rel/<verison>` branch:
+If `master` is updated, it should be merged into the `rel/<version>` branch:
 
 ```Shell
-$ get fetch upstream
+$ git fetch upstream
 $ git checkout rel/1.2.0
 $ git merge upstream/master
-$ git push rel/1.2.0
+$ git push upstream rel/1.2.0
 ```
 
 ### 5. Clean the changelog
@@ -116,8 +118,8 @@ The date should be placed after the link to the versioned URL.
 For example:
 
 ```Diff
-- ## [v1.2.0](https://dbic.readthedocs.io/en/v1.2.0/)
-+ ## [v1.2.0](https://dbic.readthedocs.io/en/v1.2.0/) (2019-03-04)
+- ## [v1.2.0](https://dbic-handbook.readthedocs.io/en/v1.2.0/)
++ ## [v1.2.0](https://dbic-handbook.readthedocs.io/en/v1.2.0/) (2019-03-04)
 ```
 
 Verify that the pull request title matches "REL: vX.Y.Z" and merge the pull request.
@@ -137,7 +139,7 @@ $ git push upstream v1.2.0
 
 There are four components to the tag command:
 
-1. `-a-` indicates that we want to use an
+1. `-a` indicates that we want to use an
    [annotated tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging#_creating_tags), which will
    ensure that [`git describe`](https://git-scm.com/docs/git-describe) works nicely with the
    repository.
@@ -165,7 +167,7 @@ description:
 Click "Publish release".
 
 Verify ReadTheDocs builds complete and publish. If needed, manually
-trigger [builds](https://readthedocs.org/projects/handbook/builds/)
+trigger [builds](https://readthedocs.org/projects/dbic-handbook/builds/)
 for `stable` and the most recent tag.
 
 ### 9. Edit the mkdocs.yml file site_name to set a new development version

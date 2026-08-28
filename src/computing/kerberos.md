@@ -1,36 +1,39 @@
+# Passwordless authentication for SSH
 
-## Password less authentication for SSH
+1. Modify `~/.ssh/config` to have a section like:
 
-1. modify ~/.ssh/config to have a section like:
+   ```ssh-config
+   Host discovery.dartmouth.edu ndoli.dartmouth.edu
+     User <netid>
+     GSSAPIAuthentication yes
+     GSSAPIDelegateCredentials yes
 
-        Host discovery.dartmouth.edu ndoli.dartmouth.edu
-          User <netid>
-          GSSAPIAuthentication yes
-          GSSAPIDelegateCredentials yes
-      
-        Host discovery
-          HostName discovery.dartmouth.edu
-      
-        Host ndoli
-          HostName ndoli.dartmouth.edu
+   Host discovery
+     HostName discovery.dartmouth.edu
 
-2. install kerberos client utilities:
+   Host ndoli
+     HostName ndoli.dartmouth.edu
+   ```
 
-     - on Fedora: `sudo dnf install krb5-workstation`
-     - on Debian: `sudo apt-get install krb5-user`
-     - on MacOS with [Homebrew](https://brew.sh/): `brew install krb5`
+1. Install the Kerberos client utilities:
 
-3. initialize your kerberos token
+   - on Fedora: `sudo dnf install krb5-workstation`
+   - on Debian: `sudo apt-get install krb5-user`
+   - on macOS with [Homebrew](https://brew.sh/): `brew install krb5`
 
-        kinit <NETID>@KIEWIT.DARTMOUTH.EDU
+1. Initialize your Kerberos token:
 
-    where `<NETID>` is your Dartmouth NetID (like `d11191d`).
+   ```shell
+   kinit <NETID>@KIEWIT.DARTMOUTH.EDU
+   ```
 
-Use `klist` command to see if there is an active token.
-As you will see from `klist` output, that token has expiration date, which is 10 hours from the moment you `kinit`ed it. 
-You could use `kinit -R` (or just ssh again) to refresh the ticket.
-It will be refreshed for up to 30 days. 
+   where `<NETID>` is your Dartmouth NetID (like `d11191d`).
 
-TODO: make it even more sophisticated (auto-updated)
+Use the `klist` command to see whether there is an active token.
+As you will see from the `klist` output, that token has an expiration date, which is 10 hours from the moment you `kinit`ed it.
+You can use `kinit -R` (or just ssh again) to refresh the ticket.
+It will be refreshed for up to 30 days.
 
-Now you should be able to just `ssh discovery` or `ssh ndoli`
+TODO: make it even more sophisticated (auto-updated).
+
+Now you should be able to just `ssh discovery` or `ssh ndoli`.

@@ -4,7 +4,6 @@ All data is collected and provided for access and conversion into BIDS on roland
 
 You need to request access permissions from [Research Computing](mailto:research.computing@dartmouth.edu).
 
-
 ```mermaid
 ---
 config:
@@ -40,17 +39,17 @@ subgraph subGraph2["Converted Data"]
 ```
 
 N.B. Storing under `sourcedata/raw/` is a planned solution.
-At the moment it would be just in the root of the dataset.
+At the moment the data is placed in the root of the dataset.
 
 ## DICOMs
 
-All dicoms are organized into `YEAR/MONTH/DATE/ACCESSION` hierarchy under `/inbox/DICOM`.
+All DICOMs are organized into `YEAR/MONTH/DATE/ACCESSION` hierarchy under `/inbox/DICOM`.
 You can `scp` or `rsync` them to your local storage.
 
 ## BIDS
 
-At the moment, upon request from a lab member to [Yaroslav Halchenko](mailto:yoh@dartmouth.edu), data is converted from DICOMs into BIDS within the directories hierarchy under `/inbox/BIDS`, following convention described in the [ReproIn section](./reproin.md).
-If any metadata (`subject_id` or `session_id`) need to be corrected, inform ahead of time.
+At the moment, upon request from a lab member to [Yaroslav Halchenko](mailto:yoh@dartmouth.edu), data is converted from DICOMs into BIDS within the directories hierarchy under `/inbox/BIDS`, following the convention described in the [ReproIn section](reproin.md).
+If any metadata (`subject_id` or `session_id`) needs to be corrected, let us know ahead of time.
 
 These directories are also DataLad datasets, so you have two options on how to transfer them:
 
@@ -65,13 +64,14 @@ datalad clone myrolandoid@rolando.cns.dartmouth.edu:/inbox/BIDS/dbic/dbic-animal
 
 This will create a local clone of the dataset, and you can use `datalad get` to get the data you need.
 
-### Old fashion way
+### Old fashioned way
 
-`scp` or `rsync`. But you would need to take care about de-referencing symlinks.
+`scp` or `rsync`, but you would need to take care of de-referencing symlinks:
 
-    rsync --exclude=.git --copy-links -r \
-        rolando.cns.dartmouth.edu:/inbox/BIDS/dbic/dbic-animals dbic-animals
+```shell
+rsync --exclude=.git --copy-links -r \
+    rolando.cns.dartmouth.edu:/inbox/BIDS/dbic/dbic-animals dbic-animals
+```
 
-
-You could add `--exclude=sourcedata` and/or `--exclude=derivatives` to exclude folders with original DICOMS and possible derivatives (fmriqc, etc).
+You could add `--exclude=sourcedata` and/or `--exclude=derivatives` to exclude the folders with the original DICOMs and possible derivatives (mriqc, fmriprep, etc.).
 

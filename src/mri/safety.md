@@ -1,4 +1,3 @@
 # MRI Safety
 
-TODO describe details/procedures
-
+TODO: describe the details and procedures.

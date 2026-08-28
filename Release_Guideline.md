@@ -3,8 +3,9 @@
 This document captures guidelines to follow when considering a new release of the DBIC Handbook.
 
 ## Background
+
 DBIC has generally followed a semantic versioning (semver) approach.
-The canonical semver text can be found at https://semver.org/, and an adaptation to documents can be found at https://semverdoc.org/.
+The canonical semver text can be found at <https://semver.org/>, and an adaptation to documents can be found at <https://semverdoc.org/>.
 A handbook falls somewhere between these two, as documentation does not require
 backwards compatibility, while software has notions of bugs and features which do not
 map to the reasons for updating a handbook.
@@ -16,8 +17,8 @@ backwards-incompatible changes, while minor and patch releases must be backwards
 
 ## Guidelines
 
-Once a decision for a release has been established, the rules of [decision-making](DECISION-MAKING.md)
-govern the mechanism of doing the release, *i.e.*, waiting 5 business days and obtaining
+Once a decision for a release has been established, the usual decision-making rules
+govern the mechanism of doing the release, *i.e.* waiting 5 business days and obtaining
 the approval of at least one maintainer before merging.
 
 ### Minor (1.X.0) releases
@@ -31,9 +32,9 @@ The DBIC Maintainers have discretion to identify other cases justifying a minor 
 Patch releases will generally be more frequent, and indicate less significant changes to the handbook.
 The following is a non-exhaustive set of justifications for a patch release:
 
-- A modality field has changed and the [bids-validator](https://github.com/dbic/bids-validator) has been updated to reflect this change.
+- A modality field has changed and the [bids-validator](https://github.com/bids-standard/bids-validator) has been updated to reflect this change.
 - Links or information in the handbook are no longer accurate, *e.g.* if a BEP document is added or moved
-- The rendering of the [handbook](https://dbic.readthedocs.io/en/stable/) has changed
+- The rendering of the [handbook](https://dbic-handbook.readthedocs.io/en/stable/) has changed
 - A metadata field or file type is added at the request of a curator attempting to release DBIC-compliant data
 
 Ultimately, all releases are a matter of maintainer discretion, but patch release frequency should

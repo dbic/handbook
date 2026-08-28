@@ -1,24 +1,24 @@
-
 # Contributing to the DBIC Handbook
 
-**Welcome to the DBIC Handbook repository located at [github.com/dbic/handbook](http://github.com/dbic/handbook) !**
+Welcome to the DBIC Handbook repository, located at [github.com/dbic/handbook](https://github.com/dbic/handbook).
+We're so excited you're here and want to contribute!
 
-*We're so excited you're here and want to contribute.*
-
-We hope that these guidelines are designed to make it as easy as possible to get involved. If you have any questions that aren't discussed below, please let us know by [opening an issue](#understanding-issues).
+These guidelines are designed to make it as easy as possible to get involved.
+If you have any questions that aren't discussed below, please let us know by [opening an issue](#understanding-issues).
 
 ## Table of contents
 
 Been here before? Already know what you're looking for in this guide? Jump to the following sections:
 
-*   [Joining the DBIC community](#joining-the-community)
-*   [Contributing through GitHub](#contributing-through-github)
-*   [Understanding issues](#understanding-issues)
-*   [Writing in markdown](#writing-in-markdown)
-*   [Make a change with a pull request](#making-a-change-with-a-pull-request)
-*   [Example pull request](#example-pull-request)
-*   [Fixing Remark errors from Travis](#fixing-travis-remark-errors)
-*   [Recognizing contributions](#recognizing-contributions)
+- [Joining the DBIC community](#joining-the-community)
+- [Contributing through GitHub](#contributing-through-github)
+- [Understanding issues](#understanding-issues)
+- [Writing in markdown](#writing-in-markdown)
+- [Building the handbook using mkdocs](#building-the-handbook-using-mkdocs)
+- [Making a change with a pull request](#making-a-change-with-a-pull-request)
+- [Example pull request](#example-pull-request)
+- [Fixing remark errors reported by CI](#fixing-remark-errors-reported-by-ci)
+- [Recognizing contributions](#recognizing-contributions)
 
 ## Joining the community
 
@@ -56,20 +56,19 @@ Issues are assigned [labels](#issue-labels) which explain how they relate to the
 
 The current list of labels are [here](https://github.com/dbic/handbook/labels) and include:
 
-* [![Help wanted](https://img.shields.io/badge/-help%20wanted-159818.svg)](https://github.com/dbic/handbook/labels/community) *These issues contain a task that a member of the team has determined we need additional help with.*
+- [![Help wanted](https://img.shields.io/badge/-help%20wanted-159818.svg)](https://github.com/dbic/handbook/labels/community) *These issues contain a task that a member of the team has determined we need additional help with.*
 
-    If you feel that you can contribute to one of these issues, we especially encourage you to do so!
+  If you feel that you can contribute to one of these issues, we especially encourage you to do so!
 
-* [![Opinions wanted](https://img.shields.io/badge/-opinions%20wanted-84b6eb.svg)](https://github.com/dbic/handbook/labels/opinions%20wanted) *These issues hold discussions where we're especially eager for feedback.*
+- [![Opinions wanted](https://img.shields.io/badge/-opinions%20wanted-84b6eb.svg)](https://github.com/dbic/handbook/labels/opinions%20wanted) *These issues hold discussions where we're especially eager for feedback.*
 
-    Ongoing discussions benefit from broad feedback.
-    This label is used to highlight issues where decisions are being considered, so please join the conversation!
+  Ongoing discussions benefit from broad feedback.
+  This label is used to highlight issues where decisions are being considered, so please join the conversation!
 
-* [![Community](https://img.shields.io/badge/-community-%23ddcc5f.svg)](https://github.com/dbic/handbook/labels/community) *These issues are related to building and supporting the DBIC community.*
+- [![Community](https://img.shields.io/badge/-community-%23ddcc5f.svg)](https://github.com/dbic/handbook/labels/community) *These issues are related to building and supporting the DBIC community.*
 
-    In addition to the handbook itself, we are dedicated to creating a healthy community.
-    These issues highlight pieces of work or discussions around how we can support our members and make it easier to contribute.
-
+  In addition to the handbook itself, we are dedicated to creating a healthy community.
+  These issues highlight pieces of work or discussions around how we can support our members and make it easier to contribute.
 
 ## Writing in markdown
 
@@ -80,34 +79,34 @@ Remark preserves consistent markdown styling across the contributions.
 Please ensure before submitting a contribution that you do not have any linter errors in your text editor.
 You can also use [prettier](https://github.com/prettier/prettier) to automatically correct some of the style issues that might be found in the proposed changes.
 
-We have deployed a continuous integrator ([circle CI](https://circleci.com/)) to further allow for integrating changes continuously.
-The CI is testing that the changes are inline with our standard styling.
+Every pull request is checked by [GitHub Actions](https://github.com/dbic/handbook/actions):
+the workflow lints the Markdown sources with remark, builds the handbook with MkDocs, and verifies that no internal link is broken.
+The workflow definitions live in [.github/workflows/](https://github.com/dbic/handbook/tree/master/.github/workflows).
 
 GitHub has a helpful page on [getting started with writing and formatting on GitHub](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github).
 
 ## Building the handbook using mkdocs
 
-We are using mkdocs to render our handbook. 
+We are using mkdocs to render our handbook.
 Please follow these instructions if you would like to build the handbook locally.
 
-#### 1. Install mkdocs
+### 1. Clone the DBIC Handbook [repository](https://github.com/dbic/handbook/tree/master)
 
-To begin please follow [this link](https://www.mkdocs.org/#installation) to install mkdocs locally.
+Clone the repository with `git` (TODO: link to docs).
+You will need `git` to contribute the changes you make later.
 
-#### 2. Download the DBIC Handbook [repository](https://github.com/dbic/handbook/tree/master)
+### 2. Install the build dependencies
 
-Cloning the repository with `git`(TODO link to docs). You will need `git` to contribute the changes you make later.
+From the root of your clone, run `pip install -r requirements.txt`.
+That installs [MkDocs](https://www.mkdocs.org/) together with the
+[Material theme](https://squidfunk.github.io/mkdocs-material/) at the versions the handbook is built with.
 
-#### 3. Install our theme
+### 3. In the terminal (command line) navigate to your local version of the handbook
 
-`pip install mkdocs-material`
-See [theme website](https://squidfunk.github.io/mkdocs-material/) for more info.
+This location will have the same files you see on our [main handbook page](https://github.com/dbic/handbook).
+Note: a Finder window may not show hidden files (those that start with a period, e.g. `.remarkrc`).
 
-#### 4. In the terminal (command line) navigate to your local version of the handbook
-
-This location will have the same files you see on our [main handbook page](https://github.com/dbic/handbook). Note: A finder window may not show the hidden files (those that start with a period i.e. .remarkrc)
-
-#### 5. Ready to build!
+### 4. Ready to build!
 
 Using the terminal (command line) please enter `mkdocs serve`.
 This will allow you to see a local version of the handbook.
@@ -118,32 +117,33 @@ You may enter that into your browser and this will bring up the handbook!
 
 We appreciate all contributions to the DBIC Handbook. **THANK YOU** for helping us build this useful resource.
 
-#### 1. Comment on an existing issue or open a new issue referencing your addition
+### 1. Comment on an existing issue or open a new issue referencing your addition
 
 This allows other members of the DBIC Handbook team to confirm that you aren't overlapping with work that's currently underway and that everyone is on the same page with the goal of the work you're going to carry out.
 
-#### 2. [Fork](https://help.github.com/articles/fork-a-repo/) [this repository](https://github.com/dbic/handbook) to your profile
+### 2. [Fork](https://help.github.com/articles/fork-a-repo/) [this repository](https://github.com/dbic/handbook) to your profile
 
 This is now your own unique copy of the DBIC Handbook.
 Changes here won't affect anyone else's work, so it's a safe space to explore edits to the handbook!
 
-Make sure to [keep your fork up to date](https://help.github.com/articles/syncing-a-fork/) with the master repository, otherwise you can end up with lots of dreaded [merge conflicts](https://help.github.com/articles/about-merge-conflicts/).
+Make sure to [keep your fork up to date](https://help.github.com/articles/syncing-a-fork/) with the upstream repository, otherwise you can end up with lots of dreaded [merge conflicts](https://help.github.com/articles/about-merge-conflicts/).
 
-#### 3. Make the changes you've discussed
+### 3. Make the changes you've discussed
 
 Try to keep the changes focused.
-If you submit a large amount of work in all in one go it will be much more work for whomever is reviewing your pull request.
+If you submit a large amount of work all in one go, it will be much more work for whoever is reviewing your pull request.
 Please detail the changes you are attempting to make.
 
-#### 4. Submit a [pull request](https://help.github.com/articles/about-pull-requests/)
+### 4. Submit a [pull request](https://help.github.com/articles/about-pull-requests/)
 
 Please keep the title of your pull request short but informative - it will appear in the [changelog](CHANGES.md).
 
 Use one of the following prefixes in the title of your pull request:
-  - `[ENH]` - enhancement of the handbook that adds a new feature or support for a new data type
-  - `[FIX]` - fix of a typo or language clarification
-  - `[INFRA]` - changes to the infrastructure automating the handbook release (for example building HTML docs etc.)
-  - `[MISC]` - everything else including changes to the file listing contributors
+
+- `[ENH]` - enhancement of the handbook that adds a new feature or support for a new data type
+- `[FIX]` - fix of a typo or language clarification
+- `[INFRA]` - changes to the infrastructure automating the handbook release (for example building HTML docs etc.)
+- `[MISC]` - everything else including changes to the file listing contributors
 
 If you are opening a pull request to obtain early feedback, but the changes are not ready to be merged (a.k.a. Work in Progress pull request) please use a [draft pull request](https://github.blog/2019-02-14-introducing-draft-pull-requests/).
 
@@ -159,63 +159,57 @@ You don't need to submit a new pull request when you make a change in response t
 GitHub has a [nice introduction](https://help.github.com/articles/github-flow/) to the pull request workflow, but please [get in touch](https://github.com/dbic/handbook/issues/new) if you have any questions.
 
 ## Example pull request
+
 <img align="center" src="https://i.imgur.com/s8yELfK.png" alt="Example-Contribution" width="800"/>
 
+## Fixing remark errors reported by CI
 
-## Fixing Travis Remark errors
+We use a linter called [remark-lint](https://github.com/remarkjs/remark-lint) to ensure all of our Markdown documents are consistent and well-styled.
+It runs in the *Markdown style* job of the CI workflow, and it commonly flags errors.
+When that job fails, use the following process to resolve the issue.
 
-We use a linter called [Remarkjs](https://github.com/remarkjs/remark-lint) to ensure all of our Markdown documents are consistent and well-styled.
-This commonly produces errors, which are flagged by [Travis CI](https://travis-ci.org/), a continuous integration service.
-When Travis returns an error, use the following process to resolve the issue:
+### 1. Install Node.js / npm
 
-#### 1. Install NodeJS / npm
+We use a Markdown linter written in JavaScript.
+To run JavaScript tools on the command line, please [download and install](https://nodejs.org/en/download/) Node.js.
 
-We use a markdown linter written in Javascript.
-To run command Javascript tools on the command line, please [download and install](https://nodejs.org/en/download/) NodeJS.
+### 2. Install remark and our style guide
 
-#### 2. Install Remark-CLI and our style guide
+The linter and the presets it needs are declared in `package.json`, so from the root of your clone run:
 
-Remark-CLI can be installed via [npm](https://www.npmjs.com/), which is part of the NodeJS distribution.
-
-To install the packages we use for our style guide, the following command will work on most command lines:
-
-```
-npm install `cat npm-requirements.txt`
+```shell
+npm install
 ```
 
-The equivalent command on PowerShell is:
+### 3. Check the sources
 
-```
-npm install @(cat npm-requirements.txt)
-```
+The same command CI runs is available as an npm script:
 
-#### 3. Fix the flagged document
-
-Please go to the directory where the flagged file is and run remark like this:
-
-```
-remark flagged_file.md -o flagged_file_fixed.md
+```shell
+npm run lint
 ```
 
-Please confirm this has fixed the file.
-To do this, please run this:
+It reports every file that does not conform to the style guide.
 
-```
-remark flagged_file_fixed.md --frail
+### 4. Fix the flagged documents
+
+remark can rewrite the sources into their canonical form for you:
+
+```shell
+npm run fix
 ```
 
-This command will indicate whether this file now conforms to the style guide.
-If it passes, replace `flagged_file.md` with the contents of `flagged_file_fixed.md`, add and commit the change:
+Review the resulting diff (`git diff`), since reformatting is not always what you intended, then re-run `npm run lint` to
+confirm that the files now conform to the style guide, and commit the change:
 
-```
-mv flagged_file_fixed.md flagged_file.md
-git add flagged_file.md
+```shell
+git add -u
 git commit -m 'STY: Fixed Markdown style'
 ```
 
-## How the decision to merge a pull request is made?
+## How is the decision to merge a pull request made?
 
-Everyone use your best judgement, it's worked fine so far.
+Everyone uses their best judgement; it has worked fine so far.
 
 ## Recognizing contributions
 
