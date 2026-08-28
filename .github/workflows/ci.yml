@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  markdown:
+    name: Markdown style
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint Markdown sources with remark
+        run: npm run lint
+
+  docs:
+    name: Build handbook
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements.txt
+
+      - name: Build the site with MkDocs
+        run: mkdocs build --clean --strict --verbose
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: site/
+
+  linkcheck:
+    name: Check internal links
+    needs: docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install linkchecker
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: site
+
+      # Only internal links are checked here; external ones are checked on a
+      # schedule by .github/workflows/linkcheck-external.yml so that pull
+      # requests do not fail because of a third-party outage.
+      - name: Check links within the built site
+        run: linkchecker -t 1 site/

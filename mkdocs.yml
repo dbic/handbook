@@ -1,14 +1,31 @@
 site_name: Dartmouth Brain Imaging Center Handbook
+site_url: https://dbic-handbook.readthedocs.io/
+site_description: Documentation for users of the Dartmouth Brain Imaging Center
+repo_url: https://github.com/dbic/handbook
+edit_uri: edit/master/src/
+copyright: See the source code and discussion pages on GitHub.
 theme:
     name: material
-    custom_dir: theme_customizations/
     favicon: images/favicon.png
     logo: images/logo.png
+    features:
+        - navigation.footer
+        - content.action.edit
     palette:
-        primary: 'light green'
-        accent: 'light green'
-extra_javascript:
-    - js/jquery-3.4.1.min.js
+        - media: "(prefers-color-scheme: light)"
+          scheme: default
+          primary: light green
+          accent: light green
+          toggle:
+              icon: material/weather-night
+              name: Switch to dark mode
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          primary: light green
+          accent: light green
+          toggle:
+              icon: material/weather-sunny
+              name: Switch to light mode
 markdown_extensions:
     - toc:
         anchorlink: true
@@ -22,9 +39,10 @@ plugins:
 docs_dir: 'src'
 use_directory_urls: false
 nav:
+    - Home: index.md
     - Fundamentals:
       - Shell: basics/shell.md
-      - SSH: TODO.md
+      - SSH: computing/kerberos.md
       - Containers: basics/containers.md
       - DataLad: basics/datalad.md
       - PyBIDS: TODO.md
@@ -50,6 +68,9 @@ nav:
     - MRS: TODO.md
     - Computing resources:
       - Discovery HPC: computing/discovery.md
+      - Jupyter on Discovery: computing/discovery-jupyter.md
+      - Passwordless SSH: computing/kerberos.md
+      - Troubleshooting: computing/troubleshooting.md
     - Publishing:
         - Datasets: TODO.md
         - Data papers: publishing/data-paper.md
@@ -60,3 +81,4 @@ nav:
     - Additional resources: additional_resources.md
     - Changelog: CHANGES.md
     - Contributing: CONTRIBUTING.md
+    - Code of Conduct: CODE_OF_CONDUCT.md

@@ -2,9 +2,10 @@
   "plugins": [
     "preset-lint-markdown-style-guide",
     ["lint-no-duplicate-headings", false],
-    ["lint-list-item-indent", "tab-size"],
+    ["lint-list-item-indent", "one"],
     ["lint-emphasis-marker", "consistent"],
     ["lint-maximum-line-length", false],
-    ["lint-maximum-heading-length", false]
+    ["lint-maximum-heading-length", false],
+    ["lint-no-file-name-irregular-characters", false]
   ]
 }
