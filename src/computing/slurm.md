@@ -6,7 +6,8 @@ These are possibly useful little things you can do to make it easier to work wit
 
 ## Do/Don’t
 
-- **DON’T** update a container file you’re currently using. They are mounted as read only volumes during execution, and even a minor change can lead to a low level error at some point.
+- **DON’T** update a container file that's currently running! They are mounted as read only volumes during execution, and even a minor change can lead to a low level error at some point.
+- **DO** consider using standard containers preinstalled at `/dartfs/rc/lab/D/DBIC/DBIC/archive/containers` (they are versioned, and so individual ones should not change).
 - **DO** clean up any temporary files in shared scratch space, either manually or automatically. Scratch space is cleaned periodically, but slowly enough that it can completely fill (which will cause jobs to fail for any users who try to use it). See sample code for automatic cleanup below.
 
 ## Cleanup on Exit
