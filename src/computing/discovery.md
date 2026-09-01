@@ -125,7 +125,7 @@ If you are `get`ing data to discovery, to non-POSIX compliant filesystem, then y
 
 ## About File/Directory Permissions and ACLs
 
-(see also the "Permissions" section for many more gory details)
+(see also the [Permissions](permissions.md) section for many more gory details)
 
 The traditional/legacy permission structure on Linux is a "user-group-other" triple, with three permission settings for each: "read-write-execute" (coded as rwx). If you run `ls -l` on a file or directory, this is the core of what you see on the left, e.g. `rwxrwx---` would indicate that both user and group (both also specified in the `ls -l` "long" output) have full "read-write-execute" permissions, but others have none.
 
