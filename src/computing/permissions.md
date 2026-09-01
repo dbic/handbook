@@ -14,7 +14,7 @@ NOTE: there is a new storage system (Vast, at `/vast`) used by DBIC on a “temp
 - When setting permissions there is no “recursive” flag, so you need to do your own recursion, e.g. `find My_Results/ -print0 | xargs -0 -n1 nfs4_setfacl -a "A::THATUSER:rxtc"` (substituting for `THATUSER` with a DartID or other entry) to give a user read/traverse permission throughout My_Results, and the ability to see the ACLs (`c`)
     - To cover *future* new files/dirs, you could also add `fd`, e.g. `"A:fd:THATUSER:rxtc"`, to set inheritance — though separate rules are better, so that you can make directories and files have different permissions
 - If you copy a file folder (or move it between filesystems) new ACLs are set based on the destination, but if you move a file within a filesystem it keeps its old ACLs
-- For DataLad specific advice, refer to https://dbic-handbook.readthedocs.io/en/latest/computing/discovery.html#installing-data
+- For DataLad specific advice, refer to [Discovery: Installing data](discovery.md#installing-data) section
 - “Classic” (`chmod`) POSIX permissions sometimes still work, though with limits — see the section on system specific behaviors
 
 # Local Notes
