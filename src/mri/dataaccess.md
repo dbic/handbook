@@ -64,7 +64,7 @@ datalad clone myrolandoid@rolando.cns.dartmouth.edu:/inbox/BIDS/dbic/dbic-animal
 
 This will create a local clone of the dataset, and you can use `datalad get` to get the data you need.
 
-### Old fashioned way
+### Old-fashioned way
 
 `scp` or `rsync`, but you would need to take care of de-referencing symlinks:
 
@@ -73,5 +73,5 @@ rsync --exclude=.git --copy-links -r \
     rolando.cns.dartmouth.edu:/inbox/BIDS/dbic/dbic-animals dbic-animals
 ```
 
-You could add `--exclude=sourcedata` and/or `--exclude=derivatives` to exclude the folders with the original DICOMs and possible derivatives (mriqc, fmriprep, etc.).
+You could add `--exclude=sourcedata` and/or `--exclude=derivatives` to exclude the folders with the original DICOMs and possible derivatives (mriqc, etc.).
 

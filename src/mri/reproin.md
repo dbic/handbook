@@ -40,10 +40,10 @@ where
   a known BIDS sequence type, which is usually the name of the folder under
   the subject's directory.  The (optional) label is specific per sequence type
   (e.g. the typical `bold` for `func`, `T1w` for `anat`, or `fid` for `mrs`), and can often
-  (but not always) be deduced from DICOM.  The modalities known to BIDS are:
+  (but not always) be deduced from DICOM.  The modalities known to ReproIn are:
 
   - `anat` -- anatomical data.  It might also be collected multiple times across
-    runs (e.g. if the subject is taken out of the magnet), so it could
+    runs (e.g. if the subject is taken out of the magnet, etc.), so it could
     (optionally) have a `_run` definition attached.  For "standard anat"
     labels, please consult [BIDS specification "Anatomy imaging data"][];
     the most common ones are `T1w`, `T2w` and `angio`
@@ -60,12 +60,16 @@ where
   - `mrs` -- magnetic resonance spectroscopy (WiP, [BEP022](https://docs.google.com/document/d/1pWCb02YNv5W-UZZja24fZrdXLm4X7knXMiZI7E2z7mY))
 
 - `_ses-<SESID>` (optional) --
-  a session.  Having it in a single sequence within a study makes that study
+  a session.  Having it in even a single sequence within a study makes that study
   follow the "multi-session" layout.  It is common practice to place the `_ses-`
   specifier within the scout sequence name.  You can either specify an explicit
-  session identifier (`SESID`) or use `_ses-{date}` in case of scanning phantoms
-  or non-human subjects, when you want sessions to be coded by the acquisition
-  date (see e.g. the [///dbic/QA][] dataset, acquired with such session identifiers)
+  session identifier (`SESID`), or let the heuristic manage it for you: `_ses-+`
+  creates a new session (numbering starts at `001`) and `_ses-=` maintains the
+  session identifier used for the previous acquisition.
+  You can also use `_ses-{date}` (or `_ses-DATE` on the Siemens X60, which does
+  not allow `{}` in names) in case of scanning phantoms or non-human subjects,
+  when you want sessions to be coded by the acquisition date (see e.g. the
+  [///dbic/QA][] dataset, acquired with such session identifiers)
 
 - `_task-<TASKID>` (optional) --
   a short name for the task performed during that run.  If it is not provided and
@@ -108,7 +112,7 @@ where
 
 - If a run was canceled, just copy the canceled run (with the same index) and re-run
   it.  Files with an overlapping name will be considered a duplicate/canceled
-  acquisition and only the last one will remain.  The others will acquire a
+  session and only the last one will remain.  The others will acquire a
   `__dup0<number>` suffix.
 
 Although we still support `-` and `+` used within `SESID` and `TASKID`, their use is
@@ -118,7 +122,7 @@ not recommended, and thus not listed here.
 
 [HeuDiConv][] is a flexible DICOM converter for organizing brain imaging data into
 structured directory layouts.
-The ReproIn [heuristic][] was developed within, and is now shipped with, HeuDiConv,
+The ReproIn [heuristic][] is shipped within HeuDiConv,
 so it can be used independently of the ReproIn setup on any HeuDiConv
 installation (pass `-f reproin` to the `heudiconv` call).
 

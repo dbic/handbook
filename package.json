@@ -9,8 +9,8 @@
     "url": "https://github.com/dbic/handbook.git"
   },
   "scripts": {
-    "lint": "remark --frail --quiet src/*.md src/*/*.md",
-    "fix": "remark --output src/*.md src/*/*.md"
+    "lint": "remark --frail --quiet src/",
+    "fix": "remark --output src/"
   },
   "devDependencies": {
     "remark-cli": "^12.0.1",

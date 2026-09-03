@@ -1,9 +1,10 @@
 site_name: Dartmouth Brain Imaging Center Handbook
-site_url: https://dbic-handbook.readthedocs.io/
+site_url: !ENV [READTHEDOCS_CANONICAL_URL, 'https://dbic-handbook.readthedocs.io/en/latest/']
 site_description: Documentation for users of the Dartmouth Brain Imaging Center
 repo_url: https://github.com/dbic/handbook
+repo_name: dbic/handbook
 edit_uri: edit/master/src/
-copyright: See the source code and discussion pages on GitHub.
+copyright: See the source code and discussion pages on <a href="https://github.com/dbic/handbook">GitHub</a>.
 theme:
     name: material
     favicon: images/favicon.png
@@ -11,6 +12,7 @@ theme:
     features:
         - navigation.footer
         - content.action.edit
+        - content.code.copy
     palette:
         - media: "(prefers-color-scheme: light)"
           scheme: default
@@ -27,6 +29,9 @@ theme:
               icon: material/weather-sunny
               name: Switch to light mode
 markdown_extensions:
+    - pymdownx.highlight:
+        anchor_linenums: true
+    - pymdownx.inlinehilite
     - toc:
         anchorlink: true
     - pymdownx.superfences:
@@ -35,22 +40,32 @@ markdown_extensions:
             class: mermaid
             format: !!python/name:pymdownx.superfences.fence_code_format
 plugins:
+    # Downloads and self-hosts the mermaid bundle and web fonts that Material
+    # would otherwise pull from unpkg.com / Google Fonts at page-load time.
+    - privacy
     - search
+validation:
+    nav:
+        omitted_files: warn
+        not_found: warn
+    links:
+        not_found: warn
+        anchors: warn
+        unrecognized_links: warn
 docs_dir: 'src'
 use_directory_urls: false
 nav:
     - Home: index.md
     - Fundamentals:
       - Shell: basics/shell.md
-      - SSH: computing/kerberos.md
       - Containers: basics/containers.md
       - DataLad: basics/datalad.md
-      - PyBIDS: TODO.md
+      - PyBIDS: todo/pybids.md
     - A new study:
         - Policies & procedures: https://www.dartmouth.edu/dbic/
-        - JEDCap: TODO.md
-        - Experimental design: TODO.md
-        - Pre-registration: TODO.md
+        - JEDCap: todo/jedcap.md
+        - Experimental design: todo/experimental-design.md
+        - Pre-registration: todo/pre-registration.md
     - Stimuli/Behavioral: stimuli.md
     - MRI:
         - Overview: mri/overview.md
@@ -61,20 +76,20 @@ nav:
         - MR Safety: mri/safety.md
         - Data access: mri/dataaccess.md
         - Data processing:
-            - QA: TODO.md
-            - Preprocessing: TODO.md
-            - Analysis: TODO.md
-    - EEG: TODO.md
-    - MRS: TODO.md
+            - QA: todo/qa.md
+            - Preprocessing: todo/preprocessing.md
+            - Analysis: todo/analysis.md
+    - EEG: todo/eeg.md
+    - MRS: todo/mrs.md
     - Computing resources:
       - Discovery HPC: computing/discovery.md
       - Jupyter on Discovery: computing/discovery-jupyter.md
       - Passwordless SSH: computing/kerberos.md
       - Troubleshooting: computing/troubleshooting.md
     - Publishing:
-        - Datasets: TODO.md
+        - Datasets: todo/datasets.md
         - Data papers: publishing/data-paper.md
-        - Study papers: TODO.md
+        - Study papers: todo/study-papers.md
     - Appendix:
         - Contributors: 99-appendices/01-contributors.md
         - Licenses: 99-appendices/02-licenses.md

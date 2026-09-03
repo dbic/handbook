@@ -38,7 +38,7 @@ echo "# Introduction" >| src/01-introduction.md
 echo "# $longtitle" >|  src/index.md
 echo -e "Changelog\n\n[Unreleased]($ghurl/tree/HEAD)" >| src/CHANGES.md
 
-for f in src/js src/99-appendices/01-contributors.md src/99-appendices/02-licenses.md; do
+for f in src/99-appendices/01-contributors.md src/99-appendices/02-licenses.md; do
 	git reset -- $f
 	git checkout -- $f
 done
@@ -56,8 +56,8 @@ git-sedi "[b]ids-specification.readthedocs" "dbic.readthedocs"
 git-sedi "[b]ids-standard/bids-specification" "$ghorg/$ghrepo"
 git-sedi "[g]ithub.com/bids-standard" "github.com/$ghorg"
 
-sed -i -e "s,bids-standard,$ghorg,g" .circleci/* Release*
-sed -i -e "s,bids-specification,$ghrepo,g" .circleci/* Release*
+sed -i -e "s,bids-standard,$ghorg,g" Release*
+sed -i -e "s,bids-specification,$ghrepo,g" Release*
 # More generic
 git-sedi "[B]IDS [Ss]pecification" "$shorttitle"
 git-sedi "[B]rain Imaging Data Structure" "$DBIC"
@@ -67,7 +67,7 @@ sed -i -e '/02-common-principles/,1000d' mkdocs.yml
 sed -i -e '/twitter/d' README.md
 # there is a mystery -- not replaced
 sed -i -e 's,bids.neuroimaging.i[o],dartmouth.edu/dbic,g' *md
-sed -i -e "s,specification,handbook,g" *.md .github/*
+sed -i -e "s,specification,handbook,g" *.md .github/*.md
 
 git add -u
 

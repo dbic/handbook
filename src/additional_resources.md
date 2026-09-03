@@ -7,7 +7,7 @@
 
 ## MRI collection/analysis
 
-- [DartBrains](https://dartbrains.org) -- the Psyc60 (Dartmouth fMRI Analysis) course by [Prof. Luke Chang (COSANLab)](http://cosanlab.com), with an accent on Python
+- [DartBrains](https://dartbrains.org) -- the Psyc60 (Dartmouth fMRI Analysis) course by [Prof. Luke Chang (COSANLab)](http://cosanlab.com), with an emphasis on Python
 
 - [DataLad Handbook](http://handbook.datalad.org) -- all there is to know about using DataLad
 

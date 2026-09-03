@@ -6,7 +6,7 @@ Legend (source: [all-contributors](https://github.com/kentcdodds/all-contributor
 |:------|:----------------------------------------------------------------------------|
 | 💬    | Answering Questions (on the mrusers, NeuroStars, GitHub, or in person)      |
 | 🐛    | Bug reports                                                                 |
-| 📝    | Blog posts                                                                   |
+| 📝    | Blogposts                                                                   |
 | 💻    | Code                                                                        |
 | 📖    | Documentation and specification                                             |
 | 🎨    | Design                                                                      |

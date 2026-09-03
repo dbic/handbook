@@ -2,13 +2,17 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    # rel/* is included because Release_Protocol.md asks maintainers to push
+    # release branches here so CI runs before the pull request is opened.
+    branches: [master, "rel/*"]
   pull_request:
   workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # Superseding a pull request run is fine; a merged commit should still get a
+  # completed result, so never cancel a run on the default branch.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
@@ -17,6 +21,7 @@ jobs:
   markdown:
     name: Markdown style
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
@@ -33,6 +38,7 @@ jobs:
   docs:
     name: Build handbook
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -52,17 +58,20 @@ jobs:
         with:
           name: site
           path: site/
+          if-no-files-found: error
 
   linkcheck:
     name: Check internal links
     needs: docs
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - run: pip install linkchecker
+      # Pinned so a LinkChecker release cannot turn this job red on its own.
+      - run: pip install linkchecker==10.6.0
 
       - uses: actions/download-artifact@v4
         with:

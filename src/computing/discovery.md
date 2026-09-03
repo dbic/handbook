@@ -32,7 +32,7 @@ fi
 source /optnfs/common/miniconda3/etc/profile.d/conda.sh
 
 # use DBIC-installed git-annex
-# https://dbic-handbook.readthedocs.io/en/latest/computing/discovery.html#about-filedirectory-permissions-and-acls
+# see the Discovery HPC page, "Step 1: make sure you are using a recent git-annex"
 ANNEX_BIN_PATH=/dartfs/rc/lab/D/DBIC/DBIC/archive/git-annex/usr/lib/git-annex.linux/
 echo $PATH | grep -q "$ANNEX_BIN_PATH" || export PATH="$ANNEX_BIN_PATH:$PATH"
 
@@ -44,7 +44,7 @@ alias dog="pygmentize -g"
 
 ## Installing software
 
-Make sure that `datalad --version` reports at least 0.19.3.
+Make sure that `datalad --version` reports a version greater than 0.19.3.
 
 ### Containers
 
@@ -69,7 +69,7 @@ For the purpose of using DataLad, please use the `python/3.7-Anaconda-datalad` m
 /optnfs/common/miniconda3-datalad/bin/datalad
 ```
 
-## POSIXy filesystem(s) for git-annex/DataLad
+## POSIXy filesystem(s) for git-annex/DataLad inspired
 
 TODO
 

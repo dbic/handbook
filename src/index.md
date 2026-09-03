@@ -8,13 +8,13 @@ As it turns out, neuroscience is hard: you will need many tools to collect and m
 Neuroscience also requires a LOT of computation, so you may need to use more powerful compute resources.
 It is likely that you will need to pick up some foundational skills as a Linux terminal user, and to interact with Dartmouth's high performance computing cluster, "Discovery".
 
-## One crazy tip that everyone should know
+## 1 crazy tip that everyone should know
 
 This handbook is (hopefully) lovingly maintained by DBIC users.
 If there is technology that many of you need to learn, add it here.
 If something is difficult or impossible, add it here.
 
-Consider this handbook your gift to the next generation of researchers who have just been hit by a million tools to learn.
+Consider this handbook your gift to the next generation of unfortunate researchers who have just been smited by 1 million tools to learn.
 See [Contributing](CONTRIBUTING.md) for how to add to it.
 
 ## About

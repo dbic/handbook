@@ -1,6 +1,6 @@
 # Troubleshooting
 
-## The great and evil ACL
+## The Great and Evil ACL
 
 TODO: what is an ACL (link).
 TODO: tl;dr ask Yarik to (TODO: give ACL?).

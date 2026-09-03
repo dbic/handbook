@@ -24,7 +24,7 @@ datalad get bids/sub-sid000005
 
 Meanwhile, have a look at
 
-- [a typical workflow](https://github.com/ReproNim/containers/#a-typical-workflow) with ReproNim/containers
+- [a typical YODA workflow](https://github.com/ReproNim/containers#a-typical-yoda-workflow) with ReproNim/containers
 
 - an [example](https://github.com/ReproNim/reproman/pull/438), a bit too convoluted at the moment,
   of using either `datalad run` or `reproman run` for scheduling parallel execution across the cluster
@@ -41,7 +41,7 @@ Meanwhile, have a look at
 To overcome this, start a simple web server, e.g. the one provided by Python itself, and navigate to the file of interest:
 
 - Run this line of code in the local directory (e.g. where you have mounted the Discovery directory, or have a local clone with the data fetched): `python -m http.server 8081`
-- Copy the URL it prints out (typically <http://0.0.0.0:8081/>) into your web browser address bar
+- Copy the URL it prints out (typically `http://0.0.0.0:8081/`) into your web browser address bar
 - Now you should be able to access HTML outputs with embedded images at that address -- just navigate to the `.html` file of interest and open it
 
 ### DataLad way
@@ -58,7 +58,7 @@ git config --global user.email "someemail@address"
 while replacing those values with your name and email.
 
 If you are doing this on the Discovery HPC, please first read the
-[section on the Discovery filesystem](../computing/discovery.md#about-filedirectory-permissions-and-acls)
+[section on installing data on Discovery](../computing/discovery.md#installing-data)
 on how to configure git for Discovery's ACL filesystem, unless you know that it is pure POSIX.
 
 Then it is recommended to create a directory for your study first, e.g. `mkdir ID_name` where `ID_name` is the same as on rolando, e.g. `0001_dbic-animals`, and `cd` into it:
@@ -77,6 +77,7 @@ to immediately fetch all data files as well:
 datalad install -s your-login-on-rolando@rolando.cns.dartmouth.edu:/inbox/BIDS/dbic/0001_dbic-animals dbic
 cd dbic
 datalad get -J4 sub-*  # to get only converted data, without tarballs etc.
+                       # on Discovery use -J1 instead; see the Discovery HPC page
 ```
 
 Later upgrades, to fetch new data (subjects etc.), can be done via
