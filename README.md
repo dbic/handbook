@@ -19,5 +19,5 @@ When you're ready to get started, check out [our contributing guidelines](https:
 
 We ask that all contributions to DBIC, across all project-related spaces (including but not limited to
 [GitHub](https://github.com/dbic) and
-the [mrusers mailing list](http://dbic.dartmouth.edu/mailman/listinfo/mrusers)),
+the [mrusers mailing list](mailto:mrusers@groups.dartmouth.edu)),
 adhere to our [code of conduct](https://github.com/dbic/handbook/blob/master/CODE_OF_CONDUCT.md).

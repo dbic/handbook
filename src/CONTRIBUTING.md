@@ -27,7 +27,7 @@ DBIC - the [Dartmouth Brain Imaging Center](https://dartmouth.edu/dbic/) - is a 
 How do you know that you're a member of the DBIC community? You're here! You know that DBIC exists! You're officially a member of the community. It's THAT easy! Welcome!
 
 Most of our discussions take place here in [GitHub issues](#understanding-issues).
-We also have a [mrusers mailing list](http://dbic.dartmouth.edu/mailman/listinfo/mrusers) for general DBIC announcements and discussion.
+We also have the [mrusers mailing list](mailto:mrusers@groups.dartmouth.edu) (`mrusers@groups.dartmouth.edu`) for general DBIC announcements and discussion.
 
 Moving forward, we encourage all members to contribute here on [GitHub](https://github.com/dbic/handbook).
 
