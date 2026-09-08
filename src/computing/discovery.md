@@ -1,12 +1,12 @@
 # Everything you need to know about Discovery HPC
 
 Discovery is an HPC cluster which DBIC users can utilize to run heavy computation.
-The [Discovery Overview](https://rc.dartmouth.edu/index.php/discovery-overview/) and the pages within it provide the official generic information about Discovery -- what it provides and how to use it.
+The [Discovery Overview](https://rc.dartmouth.edu/hpc/discovery-overview/) and the pages within it provide the official generic information about Discovery -- what it provides and how to use it.
 This section provides additional information and hints that are typically specific to DBIC users.
 
 ## Getting access
 
-- See the [Research Computing page on cluster access](https://rc.dartmouth.edu/discovery-overview/accessing-the-cluster/)
+- See the [Research Computing page on logging into the cluster](https://rc.dartmouth.edu/hpc/intro-to-hpc/logging-into-the-cluster/)
 
 ## Must knows
 

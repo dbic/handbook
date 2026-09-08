@@ -1,6 +1,29 @@
 # Using Jupyter Notebook on Discovery
 
-The following instructions allow you to run a Jupyter Notebook on Discovery from your local web browser using an ssh tunnel.
+Discovery schedules jobs with [Slurm](https://slurm.schedmd.com/), so jobs are
+submitted with `sbatch`, listed with `squeue` and cancelled with `scancel`.
+(Discovery used PBS/Moab in the past; `mksub`, `myjobs` and `qdel` no longer exist.)
+
+You need to be on the Dartmouth network -- on campus, or on the VPN from
+off campus -- to reach Discovery or the Open OnDemand portal at all.
+
+## Open OnDemand
+
+The simplest way to get a notebook is Dartmouth's
+[Open OnDemand](https://rc.dartmouth.edu/hpc/ood/getting-started/) portal at
+<https://ood.dartmouth.edu>: pick *Jupyter Notebook* from the Interactive Apps
+menu, fill in the submission form and click *Launch*.  Open OnDemand submits the
+Slurm job and proxies the notebook for you, so none of the manual steps below
+are needed -- no password file, and no ssh tunnel.
+
+Two fields on that form are easy to get wrong: the partition is always `ood`,
+and the account is whichever group account you belong to, or `free` if you do
+not have one.  See RC's [Jupyter on Open OnDemand](https://rc.dartmouth.edu/hpc/ood/jupyter/)
+page for the details.
+
+The rest of this page describes running the server yourself, which is still
+useful if you need a partition or a resource configuration that the Open
+OnDemand form does not offer.
 
 ## 1. Create a Jupyter password on your Discovery account
 
@@ -20,17 +43,29 @@ Verify password:
 
 ## 2. Submit a job that starts the Jupyter Notebook server on the cluster
 
-Use a text editor to create the new file `jupyter_notebook.pbs`.
+Use a text editor to create the new file `jupyter_notebook.sh`.
 Cut and paste the following text into the file and save it.
 
-```console
+```bash
 #!/bin/bash -l
-#PBS -q default
-#PBS -N Jupyter_notebook
-#PBS -l walltime=10:00:00
-#PBS -l nodes=1:ppn=1
-#PBS -l feature=bigmem # to request 8 Gb per core
 
+# Name of the job
+#SBATCH --job-name=jupyter-notebook
+# Default partition for general use; see
+# https://rc.dartmouth.edu/hpc/slurm-partition/ for the alternatives
+#SBATCH --partition=standard
+# Walltime (job duration)
+#SBATCH --time=10:00:00
+# One core on one node
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+# Memory for the job
+#SBATCH --mem=8G
+# Where the tunnelling instructions below will be written; %j is the job ID
+#SBATCH --output=jupyter-notebook-%j.out
+
+# If you belong to a group account, request it as well:
+# #SBATCH --account=<your-group-account>
 
 # get tunneling info
 XDG_RUNTIME_DIR=""
@@ -41,15 +76,17 @@ cluster="discovery7"
 # This next command chooses a random port number between 8000 and 8999
 port=`echo $(( 8000 + RANDOM % 1000 ))`
 
-
-# print tunneling instructions jupyter-log
+# print tunneling instructions to the job output file
 echo -e "
 # Command to create ssh tunnel:
 ssh -N -f -L ${port}:${node}:${port} ${user}@${cluster}.dartmouth.edu
 
 # Use a Browser on your local machine to go to:
-localhost:${port}  
+localhost:${port}
 "
+# Load the Python environment that provides jupyter. See
+# https://rc.dartmouth.edu/hpc/intro-to-hpc/environment-modules/ and
+# https://rc.dartmouth.edu/hpc/intro-to-hpc/conda-tutorial/
 module load python
 jupyter-notebook --no-browser --port=${port} --ip=${node}
 # keep it up and running
@@ -59,86 +96,57 @@ sleep 3600
 Now submit the job to the cluster:
 
 ```bash
-[d31548v@discovery7 ~]$ mksub jupyter_notebook.pbs
-1310001.pearl.hpcc.dartmouth.edu
-[d31548v@discovery7 ~]$
+[d31548v@discovery7 ~]$ sbatch jupyter_notebook.sh
+Submitted batch job 4056
 ```
 
-Note the number of the submitted job, `1310001`.  This is the unique job ID for the process running your Jupyter Notebook.
-You can list all of your jobs using the `myjobs` command, which will list all of your currently submitted jobs, including this one.
-For example:
+Note the job ID that `sbatch` reports -- `4056` above.
+You can list your own jobs with `squeue --me`:
 
 ```bash
-[d31548v@discovery7 ~]$ myjobs
-
-active jobs------------------------
-JOBID              USERNAME      STATE PROCS   REMAINING            STARTTIME
-
-1310001             d31548v    Running     1     9:59:35  Thu Dec  5 16:35:11
-
-1 active job             1 of 2456 processors in use by local jobs (0.04%)
-			  1 of 124 nodes active      (0.81%)
-
-eligible jobs----------------------
-JOBID              USERNAME      STATE PROCS     WCLIMIT            QUEUETIME
-
-
-0 eligible jobs   
-
-blocked jobs-----------------------
-JOBID              USERNAME      STATE PROCS     WCLIMIT            QUEUETIME
-
-
-0 blocked jobs   
-
-Total job:  1
+[d31548v@discovery7 ~]$ squeue --me
+JOBID PARTITION     NAME     USER ST   TIME  NODES NODELIST(REASON)
+ 4056  standard jupyter- d31548v  R   0:01      1 s01
 ```
 
-Once the job has been submitted, it will take a minute or two before two new files will appear in your working directory.
-Use `ls` to see when they show up:
+`ST` is the job state: `PD` while it is pending and `R` once it is running.
+See [Submitting a Batch Job](https://rc.dartmouth.edu/hpc/intro-to-hpc/submitting-a-batch-job/)
+to learn more about submitting jobs to Discovery.
+
+Once the job starts, the `--output` file appears in your working directory.
+Use `ls` to see when it shows up:
 
 ```bash
-[d31548v@discovery7 ~]$ ls Jupyter*
-Jupyter_notebook.e1310001  Jupyter_notebook.o1310001
+[d31548v@discovery7 ~]$ ls jupyter-notebook-*.out
+jupyter-notebook-4056.out
 ```
 
-If these files don't appear right away, wait a minute or two and try again.
-The filenames are formatted to have `<job_name>.[o,e]<job_ID>` where `<job_name>` is the name you specified in the submission script with the line: `#PBS -N Jupyter_notebook`, and the `<job_ID>` is the assigned unique job ID number.
-The `e` file contains any errors reported by your job, and the `o` files contain any text your job prints to standard output.
-See [Scheduling Jobs](https://rc.dartmouth.edu/index.php/using-discovery/scheduling-jobs/) to learn more about submitting jobs to Discovery.
+If it does not appear right away, wait a minute or two and try again -- the job
+has to be scheduled onto a node first.  The file collects everything the job
+writes to standard output and standard error, which here means the tunnelling
+instructions printed by the script followed by the notebook server's own log.
 
-Once the files appear, view the output file:
+Once the file appears, view it:
 
 ```bash
-[d31548v@discovery7 ~]$ cat Jupyter_notebook.o1310001
-------------------------- Prologue ----------------------------
-	 Started: Thu Dec  5 16:35:20 EST 2019
-	  Job ID: 1310001.pearl.hpcc.dartmouth.edu
-	 User ID: d31548v
-	Group ID: rc-users
-	Job Name: Jupyter_notebook
- Resources Req d: walltime=10:00:00,nodes=1:ppn=1,neednodes=1:ppn=1
-      Queue Name: default
-    Account Name: 
-------------------------- Prologue ----------------------------
-
+[d31548v@discovery7 ~]$ cat jupyter-notebook-4056.out
 
 # Command to create ssh tunnel:
-ssh -N -f -L 8254:n12:8254 d31548v@discovery7.dartmouth.edu
+ssh -N -f -L 8254:s01:8254 d31548v@discovery7.dartmouth.edu
 
 # Use a Browser on your local machine to go to:
-localhost:8254  
-
+localhost:8254
 ```
 
-This file contains instructions to connect to your Jupyter Notebook from your local desktop or laptop.
+This file contains the instructions to connect to your Jupyter Notebook from
+your local desktop or laptop.
 
 ## 3. Initiate the [ssh tunnel](https://www.ssh.com/ssh/tunneling/example)
 
 Open a terminal on your local machine and paste in the command to create the ssh tunnel:
 
 ```bash
-[andy@MyLaptop ~]$ ssh -N -f -L 8254:n12:8254 d31548v@discovery7.dartmouth.edu
+[andy@MyLaptop ~]$ ssh -N -f -L 8254:s01:8254 d31548v@discovery7.dartmouth.edu
 [andy@MyLaptop ~]$
 ```
 
@@ -164,22 +172,22 @@ In order to request a specific port (for example 8888), simply replace this line
 port=8888
 ```
 
-It is possible that two users may request the same port on a given compute node, which should produce an error when you try to submit the job to run the Jupyter Notebook.
+It is possible that two users may request the same port on a given compute node, which should produce an error when the notebook server starts.
 It is also possible that you have an old ssh tunnel running on your local machine that is using the same port number as the one you are currently requesting, which should cause an error on your local computer.
-You can avoid this by killing old or stale jobs in order to free up ports.
+You can avoid this by cancelling old or stale jobs in order to free up ports.
 
-To kill jobs on the Discovery cluster use `qdel`.
-For example, to kill the job with ID 1310001 that runs the server created in this tutorial, type:
+To cancel a job on the Discovery cluster use `scancel`.
+For example, to cancel the job with ID 4056 that runs the server created in this tutorial, type:
 
 ```bash
-[d31548v@discovery7 ~]$ qdel 1310001
+[d31548v@discovery7 ~]$ scancel 4056
 ```
 
 On your local machine, first find the process ID (PID) of the process running the ssh tunnel, for example:
 
 ```bash
 [andy@MyLaptop ~]$ ps -e | grep 8254
-1630 ??         0:00.02 ssh -N -f -L 8254:n12:8254 d31548v@discovery7.dartmouth.edu
+1630 ??         0:00.02 ssh -N -f -L 8254:s01:8254 d31548v@discovery7.dartmouth.edu
 ```
 
 I can now see that the PID for my ssh tunnel is `1630`.

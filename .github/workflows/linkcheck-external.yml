@@ -35,6 +35,9 @@ jobs:
       # the site legitimately produces ~30 http-redirected warnings. Without it
       # this job is red every week regardless of whether any link is broken.
       #
+      # ood.dartmouth.edu is split-horizon: it only resolves inside Dartmouth's
+      # network, so a hosted runner can never reach it.
+      #
       # The canonical URLs are skipped because a freshly built page advertises a
       # readthedocs.io URL that only exists once that version is published, so
       # they 404 for any unreleased change (see Release_Protocol.md).
@@ -44,4 +47,5 @@ jobs:
             --check-extern --no-warnings \
             --ignore-url 'file:///.*' \
             --ignore-url 'https://fonts\.gstatic\.com' \
-            --ignore-url 'https://dbic-handbook\.readthedocs\.io/.*'
+            --ignore-url 'https://dbic-handbook\.readthedocs\.io/.*' \
+            --ignore-url 'https://ood\.dartmouth\.edu.*'

@@ -9,7 +9,7 @@ If you drag and drop a file from your Windows machine into the mounted POSIX env
 (TODO: JH example.)
 
 TODO: <https://github.com/con/opfvta-replication-2023/issues/33>
-TODO: <https://rc.dartmouth.edu/wp-content/uploads/2019/04/Intro_to_Cluster.pdf>
+TODO: <https://rc.dartmouth.edu/hpc/intro-to-hpc/>
 
 ## TODO permissions
 
