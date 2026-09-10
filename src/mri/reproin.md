@@ -42,22 +42,22 @@ where
   (e.g. the typical `bold` for `func`, `T1w` for `anat`, or `fid` for `mrs`), and can often
   (but not always) be deduced from DICOM.  The modalities known to ReproIn are:
 
-  - `anat` -- anatomical data.  It might also be collected multiple times across
-    runs (e.g. if the subject is taken out of the magnet, etc.), so it could
-    (optionally) have a `_run` definition attached.  For "standard anat"
-    labels, please consult [BIDS specification "Anatomy imaging data"][];
-    the most common ones are `T1w`, `T2w` and `angio`
+    - `anat` -- anatomical data.  It might also be collected multiple times across
+      runs (e.g. if the subject is taken out of the magnet, etc.), so it could
+      (optionally) have a `_run` definition attached.  For "standard anat"
+      labels, please consult [BIDS specification "Anatomy imaging data"][];
+      the most common ones are `T1w`, `T2w` and `angio`
 
-  - `func` -- functional (a.k.a. task, including resting state) data.
-    It typically contains multiple runs, and might have a different task
-    per run (e.g. `_task-memory_run-01`, `_task-oddball_run-02`)
+    - `func` -- functional (a.k.a. task, including resting state) data.
+      It typically contains multiple runs, and might have a different task
+      per run (e.g. `_task-memory_run-01`, `_task-oddball_run-02`)
 
-  - `fmap` -- field maps.  Could be spin-echo sequences with `_dir-`
-    (e.g. `fmap_dir-AP`, `fmap_dir-PA`)
+    - `fmap` -- field maps.  Could be spin-echo sequences with `_dir-`
+      (e.g. `fmap_dir-AP`, `fmap_dir-PA`)
 
-  - `dwi` -- diffusion weighted imaging (which can have runs as well)
+    - `dwi` -- diffusion weighted imaging (which can have runs as well)
 
-  - `mrs` -- magnetic resonance spectroscopy (WiP, [BEP022](https://docs.google.com/document/d/1pWCb02YNv5W-UZZja24fZrdXLm4X7knXMiZI7E2z7mY))
+    - `mrs` -- magnetic resonance spectroscopy (WiP, [BEP022](https://docs.google.com/document/d/1pWCb02YNv5W-UZZja24fZrdXLm4X7knXMiZI7E2z7mY))
 
 - `_ses-<SESID>` (optional) --
   a session.  Having it in even a single sequence within a study makes that study
@@ -155,9 +155,9 @@ finalized, so we are only self-compliant here.
 
 - `svs_GABA_160_rival` -> `mrs_acq-gaba_task-rival` -- produces 3 measurements:
 
-  - `acq-gaba_task-rival`
-  - `acq-gaba_task-rival_edit-on` -- `PulseSequenceTiming` + `PulseSequencePulses` + `PulseSequenceName` into the `.json`
-  - `acq-gaba_task-rival_proc-diff`
+    - `acq-gaba_task-rival`
+    - `acq-gaba_task-rival_edit-on` -- `PulseSequenceTiming` + `PulseSequencePulses` + `PulseSequenceName` into the `.json`
+    - `acq-gaba_task-rival_proc-diff`
 
 - `svs_se_water_rival` -> `mrs_spec-unsup`
 

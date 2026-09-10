@@ -8,15 +8,15 @@ Envisioned purposes include, but are not limited to:
 
 - QA and troubleshooting:
 
-  - did MR collection start on time?
+    - did MR collection start on time?
 
-  - were there any abnormalities with video/audio stimuli delivery for that
-    session?
+    - were there any abnormalities with video/audio stimuli delivery for that
+      session?
 
 - automated extraction of visual annotations to be used as:
 
-  - forward modeling inputs
-  - standard GLM explanatory variables
+    - forward modeling inputs
+    - standard GLM explanatory variables
 
 Video/audio tracks are to be stored under `stimuli/` of BIDS datasets, under
 filenames matching the corresponding `.nii.gz` data.
