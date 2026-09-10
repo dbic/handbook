@@ -12,7 +12,7 @@ This section provides additional information and hints that are typically specif
 
 - Please be considerate about the nodes you are using.
   When you log in you are on a login node, and no work should be done there!
-  Instead, use the interactive node `x01`, the scheduling node `s01`, or, if you have permission, the fancy IT node `ndoli`.
+  Instead, use the interactive node `x01`, or, if you have permission, the fancy IT node `ndoli`; batch work belongs in a Slurm job (see [Submitting a Batch Job](https://rc.dartmouth.edu/hpc/intro-to-hpc/submitting-a-batch-job/)).
 
 - Home directories are limited to 50 GB of storage; for large datasets, use `/dartfs/rc/lab/D/DBIC/DBIC/`
 

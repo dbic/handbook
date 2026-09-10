@@ -2,7 +2,7 @@
 
 1.  Modify `~/.ssh/config` to have a section like:
 
-    ```ssh-config
+    ```text
     Host discovery.dartmouth.edu ndoli.dartmouth.edu
       User <netid>
       GSSAPIAuthentication yes
@@ -26,8 +26,12 @@
     The `GSSAPI*` options above are only honoured by an `ssh` that was built
     against GSS-API.  A client without it quietly ignores them and falls back
     to asking for your password, which looks just like Kerberos "not working".
-    `ssh -Q kex | grep gss` lists the GSS-API key exchange methods if your
-    client has that support, and prints nothing if it does not.
+    `ssh -G discovery.dartmouth.edu | grep -i gssapiauthentication` prints the
+    effective setting if your client understands the option, and nothing at all
+    if it was built without GSS-API.  (Do not test with `ssh -Q kex`: GSS-API
+    *key exchange* is a Debian/Fedora patch that upstream OpenSSH -- including
+    Apple's and Homebrew's -- does not carry, so that check reports a missing
+    feature on clients where `GSSAPIAuthentication` works fine.)
 
     On Debian this now needs an extra package:
 
@@ -40,8 +44,9 @@
     depends on `openssh-client`, so installing it changes nothing yet, but its
     package description states that "future releases will remove GSS-API
     support from openssh-client, so users who need it should install this
-    package".  On Debian 12 (bookworm) it is available from
-    `bookworm-backports`.
+    package".  Debian 12 (bookworm) still ships GSS-API inside `openssh-client`,
+    so nothing is needed there; the package is in `bookworm-backports` if you
+    want to switch early.
 
 1.  Initialize your Kerberos token:
 

@@ -26,6 +26,14 @@ jobs:
       # Pinned so a LinkChecker release cannot turn this job red on its own.
       - run: pip install -r requirements.txt linkchecker==10.6.0
 
+      # The privacy plugin downloads mermaid and the web fonts at build time;
+      # cache them so a transient CDN failure cannot fail an otherwise fine run.
+      - uses: actions/cache@v4
+        with:
+          path: .cache
+          key: mkdocs-privacy-${{ hashFiles('mkdocs.yml', 'requirements.txt') }}
+          restore-keys: mkdocs-privacy-
+
       - run: mkdocs build --clean --strict
 
       # Point at the *.html files rather than at the directory so that local

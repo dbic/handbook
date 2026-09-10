@@ -3,7 +3,6 @@ site_url: !ENV [READTHEDOCS_CANONICAL_URL, 'https://dbic-handbook.readthedocs.io
 site_description: Documentation for users of the Dartmouth Brain Imaging Center
 repo_url: https://github.com/dbic/handbook
 repo_name: dbic/handbook
-edit_uri: edit/master/src/
 copyright: See the source code and discussion pages on <a href="https://github.com/dbic/handbook">GitHub</a>.
 theme:
     name: material
@@ -11,7 +10,6 @@ theme:
     logo: images/logo.png
     features:
         - navigation.footer
-        - content.action.edit
         - content.code.copy
     palette:
         - media: "(prefers-color-scheme: light)"
@@ -42,7 +40,14 @@ markdown_extensions:
 plugins:
     # Downloads and self-hosts the mermaid bundle and web fonts that Material
     # would otherwise pull from unpkg.com / Google Fonts at page-load time.
-    - privacy
+    - privacy:
+        # A failed fetch is a warning, and --strict / fail_on_warning turn that
+        # into a failed build, so keep third-party decoration out of the build's
+        # critical path: these appear on one page and stay ordinary remote
+        # images, as they were before self-hosting was enabled.
+        assets_exclude:
+          - img.shields.io/*
+          - i.imgur.com/*
     - search
 validation:
     nav:

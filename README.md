@@ -1,8 +1,6 @@
 [![CI](https://github.com/dbic/handbook/actions/workflows/ci.yml/badge.svg)](https://github.com/dbic/handbook/actions/workflows/ci.yml)
 [![Documentation](https://readthedocs.org/projects/dbic-handbook/badge/?version=latest)](https://dbic-handbook.readthedocs.io/en/latest/)
 
-<img src="./src/images/logo.png" alt="DBIC logo" width="600"/>
-
 The [Dartmouth Brain Imaging Center (DBIC)](https://dartmouth.edu/dbic) is a research resource that is provided by Dartmouth College to all brain researchers in the Dartmouth community.
 Please visit the [DBIC website](https://www.dartmouth.edu/dbic/) for more information.
 

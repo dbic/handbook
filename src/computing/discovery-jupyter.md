@@ -2,7 +2,7 @@
 
 Discovery schedules jobs with [Slurm](https://slurm.schedmd.com/), so jobs are
 submitted with `sbatch`, listed with `squeue` and cancelled with `scancel`.
-(Discovery used PBS/Moab in the past; `mksub`, `myjobs` and `qdel` no longer exist.)
+(Discovery used PBS/Moab in the past; `mksub`, `myjobs` and `qdel` are no longer used.)
 
 You need to be on the Dartmouth network -- on campus, or on the VPN from
 off campus -- to reach Discovery or the Open OnDemand portal at all.
@@ -27,18 +27,18 @@ OnDemand form does not offer.
 
 ## 1. Create a Jupyter password on your Discovery account
 
-Log onto Discovery: `ssh <username>@discovery7.dartmouth.edu`
+Log onto Discovery: `ssh <username>@discovery.dartmouth.edu`
 
 Create a configuration directory and password for Jupyter Notebook:
 
 ```bash
-[d31548v@discovery7 ~]$ jupyter notebook --generate-config
+[d31548v@discovery ~]$ jupyter notebook --generate-config
 Writing default config to: /dartfs-hpc/rc/home/k/d31548v/.jupyter/jupyter_notebook_config.py
-[d31548v@discovery7 ~]$ jupyter notebook password
+[d31548v@discovery ~]$ jupyter notebook password
 Enter password: 
 Verify password:
 [NotebookPasswordApp] Wrote hashed password to /dartfs-hpc/rc/home/k/d31548v/.jupyter/jupyter_notebook_config.json
-[d31548v@discovery7 ~]$
+[d31548v@discovery ~]$
 ```
 
 ## 2. Submit a job that starts the Jupyter Notebook server on the cluster
@@ -68,13 +68,13 @@ Cut and paste the following text into the file and save it.
 # #SBATCH --account=<your-group-account>
 
 # get tunneling info
-XDG_RUNTIME_DIR=""
+export XDG_RUNTIME_DIR=""
 node=$(hostname -s)
 user=$(whoami)
-cluster="discovery7"
+cluster="discovery"
 
 # This next command chooses a random port number between 8000 and 8999
-port=`echo $(( 8000 + RANDOM % 1000 ))`
+port=$(( 8000 + RANDOM % 1000 ))
 
 # print tunneling instructions to the job output file
 echo -e "
@@ -88,15 +88,15 @@ localhost:${port}
 # https://rc.dartmouth.edu/hpc/intro-to-hpc/environment-modules/ and
 # https://rc.dartmouth.edu/hpc/intro-to-hpc/conda-tutorial/
 module load python
+# This runs in the foreground until the job's walltime expires or the job
+# is cancelled with scancel.
 jupyter-notebook --no-browser --port=${port} --ip=${node}
-# keep it up and running
-sleep 3600
 ```
 
 Now submit the job to the cluster:
 
 ```bash
-[d31548v@discovery7 ~]$ sbatch jupyter_notebook.sh
+[d31548v@discovery ~]$ sbatch jupyter_notebook.sh
 Submitted batch job 4056
 ```
 
@@ -104,7 +104,7 @@ Note the job ID that `sbatch` reports -- `4056` above.
 You can list your own jobs with `squeue --me`:
 
 ```bash
-[d31548v@discovery7 ~]$ squeue --me
+[d31548v@discovery ~]$ squeue --me
 JOBID PARTITION     NAME     USER ST   TIME  NODES NODELIST(REASON)
  4056  standard jupyter- d31548v  R   0:01      1 s01
 ```
@@ -117,7 +117,7 @@ Once the job starts, the `--output` file appears in your working directory.
 Use `ls` to see when it shows up:
 
 ```bash
-[d31548v@discovery7 ~]$ ls jupyter-notebook-*.out
+[d31548v@discovery ~]$ ls jupyter-notebook-*.out
 jupyter-notebook-4056.out
 ```
 
@@ -129,10 +129,10 @@ instructions printed by the script followed by the notebook server's own log.
 Once the file appears, view it:
 
 ```bash
-[d31548v@discovery7 ~]$ cat jupyter-notebook-4056.out
+[d31548v@discovery ~]$ cat jupyter-notebook-4056.out
 
 # Command to create ssh tunnel:
-ssh -N -f -L 8254:s01:8254 d31548v@discovery7.dartmouth.edu
+ssh -N -f -L 8254:s01:8254 d31548v@discovery.dartmouth.edu
 
 # Use a Browser on your local machine to go to:
 localhost:8254
@@ -146,7 +146,7 @@ your local desktop or laptop.
 Open a terminal on your local machine and paste in the command to create the ssh tunnel:
 
 ```bash
-[andy@MyLaptop ~]$ ssh -N -f -L 8254:s01:8254 d31548v@discovery7.dartmouth.edu
+[andy@MyLaptop ~]$ ssh -N -f -L 8254:s01:8254 d31548v@discovery.dartmouth.edu
 [andy@MyLaptop ~]$
 ```
 
@@ -163,7 +163,7 @@ This is somewhat arbitrary as any port number above 1024 should be a legal choic
 The relevant line in the script is:
 
 ```bash
-port=`echo $(( 8000 + RANDOM % 1000 ))`
+port=$(( 8000 + RANDOM % 1000 ))
 ```
 
 In order to request a specific port (for example 8888), simply replace this line with
@@ -180,14 +180,14 @@ To cancel a job on the Discovery cluster use `scancel`.
 For example, to cancel the job with ID 4056 that runs the server created in this tutorial, type:
 
 ```bash
-[d31548v@discovery7 ~]$ scancel 4056
+[d31548v@discovery ~]$ scancel 4056
 ```
 
 On your local machine, first find the process ID (PID) of the process running the ssh tunnel, for example:
 
 ```bash
 [andy@MyLaptop ~]$ ps -e | grep 8254
-1630 ??         0:00.02 ssh -N -f -L 8254:s01:8254 d31548v@discovery7.dartmouth.edu
+1630 ??         0:00.02 ssh -N -f -L 8254:s01:8254 d31548v@discovery.dartmouth.edu
 ```
 
 I can now see that the PID for my ssh tunnel is `1630`.
