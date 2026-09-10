@@ -18,4 +18,8 @@ When you're ready to get started, check out [our contributing guidelines](https:
 We ask that all contributions to DBIC, across all project-related spaces (including but not limited to
 [GitHub](https://github.com/dbic) and
 the [mrusers mailing list](mailto:mrusers@groups.dartmouth.edu)),
-adhere to our [code of conduct](https://github.com/dbic/handbook/blob/master/CODE_OF_CONDUCT.md).
+follow Dartmouth's [Nondiscrimination and Anti-Harassment Policy](https://policies.dartmouth.edu/policy/nondiscrimination-and-anti-harassment-policy-and-resolution-procedures).
+Harassment, discrimination or retaliation can be reported to the Office of Equal Opportunity, Accessibility, and Title IX (EOATIX)
+at (603) 646-0922 or Parkhurst Hall, Suite 05; the
+[Title IX reporting form](https://sexual-respect.dartmouth.edu/reporting-support/report-incident) and the anonymous
+[Dartmouth Integrity Helpline](https://dartmouth.ethicspoint.com) are also available.

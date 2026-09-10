@@ -31,7 +31,13 @@ We also have the [mrusers mailing list](mailto:mrusers@groups.dartmouth.edu) (`m
 
 Moving forward, we encourage all members to contribute here on [GitHub](https://github.com/dbic/handbook).
 
-As a reminder, we expect that all contributions adhere to our [Code of Conduct](CODE_OF_CONDUCT.md).
+DBIC is a Dartmouth facility rather than a standalone open-source community, so this handbook does not carry a
+code of conduct of its own.  Conduct in these spaces is governed by Dartmouth's
+[Nondiscrimination and Anti-Harassment Policy](https://policies.dartmouth.edu/policy/nondiscrimination-and-anti-harassment-policy-and-resolution-procedures).
+If you experience or witness harassment, discrimination or retaliation, you can report it to the Office of Equal
+Opportunity, Accessibility, and Title IX (EOATIX) at (603) 646-0922 or Parkhurst Hall, Suite 05, through the
+[Title IX reporting form](https://sexual-respect.dartmouth.edu/reporting-support/report-incident), or anonymously via the
+[Dartmouth Integrity Helpline](https://dartmouth.ethicspoint.com).
 
 ## Contributing through GitHub
 
