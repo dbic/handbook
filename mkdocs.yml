@@ -49,7 +49,10 @@ nav:
     - EEG: TODO.md
     - MRS: TODO.md
     - Computing resources:
-      - Discovery HPC: computing/discovery.md
+        - Discovery HPC: computing/discovery.md
+        - Slurm: computing/slurm.md
+        - Groups and permissions: computing/permissions.md
+        - Kerberos: computing/kerberos.md
     - Publishing:
         - Datasets: TODO.md
         - Data papers: publishing/data-paper.md
