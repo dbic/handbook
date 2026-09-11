@@ -30,9 +30,41 @@ A:fdg:groupname:rwaDxtTnNcCoy
 A::EVERYONE@:rxtncy
 ```
 
-Those lines correspond to “all permissions for owner” (a default setting), the same with some inheritance set (applies to newly created children), something similar for a `groupname` (to be filled in with a real value), and “read access for all”.
+Those lines correspond to “all permissions for owner” (a default setting), the same with some inheritance set (applies to newly created children), something similar for a `groupname` (to be filled in with a real value), and “read access for all”. See the following section for decoding specifics.
 
-See the following section for decoding specifics.
+## `listacl`, `dlistacl`, and inheritance
+
+The `listacl` program is mentioned in this document a few times as a friendlier alternative to `nfs4_getfacl` that can do some "decoding" of what ACLs mean. There is also a slightly tweaked version of this for DBIC, `dlistacl` (`/dartfs/rc/lab/D/DBIC/DBIC/code/bin/dlistacl`), motivated by inheritance.
+
+The issue here is the scope of ACLs. While it is technically possible to attach ACLs to either directories or files, in practice, attachment to files is rarely done (too much overhead), and instead the usual best practice is to insert an "inherit: files" ACL on a directory to apply to all its files (a similar "inherit: subdirs" also exists).
+
+Where this gets tricky is that it's hard to see what's going on if you aren't careful in "decoding" ACLs... In particular, in `listacl`, the user friendly decoding it doesn't consider inherited permissions (`A:fd:` stuff), other than turning any `A:fdi:` (i.e., an "inherit only" line) into `Custom` in its output.
+
+The modified `dlistacl` adds a new "scope" column, which tells whether the permissions summary shown applies to the target itself (D), its subdirectories via inheritance (S), or its child files (F)... or some combination of those if multiple ones are "on". So with this change, where `listacl` on an accession folder in the inbox shows
+```
+CWD=/dartfs/rc/lab/D/DBIC/DBIC/dbic-inbox/DICOM/2026/08/27
+drwxrwx---+ 30 f0078rn rc-DBIC-datasync 1523 Aug 27 09:56 A007650/
+ A::OWNER@                 rwaDdxtTnNc--y Allow     (DartFS-PBS-DBIC)         (Read Write Traverse)
+ A:fdi:OWNER@              rwaDdxtTnNc--y Allow       (Creator-Owner)                      (Custom)
+ A:fd:GROUP@               r----xt-n-c--y Allow  ([rc-DBIC-datasync])               (Read Traverse)
+ A:fdg:rc-DartFSadmin      rwaDdxtTnNcCoy Allow      [rc-DartFSadmin] (Read Write Traverse Control)
+ A:fdg:rc-DBIC-admin       rwaDdxtTnNcCoy Allow       [rc-DBIC-admin] (Read Write Traverse Control)
+ A:dg:rc-DBIC              r----xt-n-c--y Allow             [rc-DBIC]               (Read Traverse)
+ A:dg:rc-DBIC-DATA         r----xt-n-c--y Allow        [rc-DBIC-DATA]               (Read Traverse)
+```
+the patched version will replace that `Custom` with an actual permission summary, as well as scoping all the lines so that it's clearer that `Read Traverse` does _not_ do the same thing in the initial versus lower occurrences:
+```
+CWD=/dartfs/rc/lab/D/DBIC/DBIC/dbic-inbox/DICOM/2026/08/27
+drwxrwx---+ 30 f0078rn rc-DBIC-datasync 1523 Aug 27 09:56 A007650/
+ A::OWNER@                 rwaDdxtTnNc--y Allow [D · ·]     (DartFS-PBS-DBIC)         (Read Write Traverse)
+ A:fdi:OWNER@              rwaDdxtTnNc--y Allow [· S F]       (Creator-Owner)         (Read Write Traverse)
+ A:fd:GROUP@               r----xt-n-c--y Allow [D S F]  ([rc-DBIC-datasync])               (Read Traverse)
+ A:fdg:rc-DartFSadmin      rwaDdxtTnNcCoy Allow [D S F]      [rc-DartFSadmin] (Read Write Traverse Control)
+ A:fdg:rc-DBIC-admin       rwaDdxtTnNcCoy Allow [D S F]       [rc-DBIC-admin] (Read Write Traverse Control)
+ A:dg:rc-DBIC              r----xt-n-c--y Allow [D S ·]             [rc-DBIC]               (Read Traverse)
+ A:dg:rc-DBIC-DATA         r----xt-n-c--y Allow [D S ·]        [rc-DBIC-DATA]               (Read Traverse)
+```
+That is, `Read Traverse` for `GROUP@` also applies for subdirs and files (`D S F`) and `Read Traverse` for the final two does _not_ include files (`D S ·`).
 
 # NFSv4 ACL Format Notes
 
