@@ -110,6 +110,13 @@ reader of the handbook.
 For example, several small PRs fixing typos might be merged into a single line-item, or less
 important changes might be moved down the list to ensure that large changes are more prominent.
 
+Note that `.github/workflows/changelog.yml` regenerates this file from the pull request titles
+on every push to `master`.
+It skips the release commit itself, so the edits you make here survive the release, but a later
+merge into `master` will rebuild the whole file and the entries you merged or reordered will come
+back as the generator writes them.
+Wording that has to last belongs in the pull request titles rather than in this file.
+
 ### 6. Set release date and merge
 
 On the day of release, the current date should be added to/updated in the changelog in the form

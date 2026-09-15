@@ -93,7 +93,8 @@ You can also use [prettier](https://github.com/prettier/prettier) to automatical
 Every pull request is checked by [GitHub Actions](https://github.com/dbic/handbook/actions):
 the workflow lints the Markdown sources with remark, builds the handbook with MkDocs, and verifies that no internal link is broken.
 External links are checked weekly instead, so that a third-party outage cannot fail your pull request.
-Once a pull request is merged, a separate workflow regenerates [the changelog](CHANGES.md) from the merged pull request titles and commits it back to `master`.
+A separate workflow regenerates [the changelog](CHANGES.md) from the merged pull request titles on every push to `master` and commits it back, but only when the content has actually changed.
+Release commits are skipped so that a changelog a maintainer curated for a release is not immediately overwritten.
 The workflow definitions live in [.github/workflows/](https://github.com/dbic/handbook/tree/master/.github/workflows).
 
 GitHub has a helpful page on [getting started with writing and formatting on GitHub](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github).

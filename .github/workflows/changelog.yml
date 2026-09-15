@@ -1,8 +1,8 @@
 name: Changelog
 
 # Ported from the CircleCI github-changelog-generator / remark / Changelog-bot
-# job chain.  Every push to master regenerates src/CHANGES.md from the merged
-# pull requests and commits it back if it changed.
+# job chain.  A push to master regenerates src/CHANGES.md from the merged pull
+# requests and commits it back when the content actually changed.
 on:
   push:
     branches: [master]
@@ -10,22 +10,34 @@ on:
 
 # Two runs must never race each other into a push.
 concurrency:
-  group: changelog
+  group: ${{ github.workflow }}
   cancel-in-progress: false
 
 permissions:
   contents: write
+  # The generator reads /issues and /pulls even with --no-issues, which only
+  # filters what it has already fetched.  Without these it gets a 403 and dies.
+  issues: read
+  pull-requests: read
 
 jobs:
   changelog:
     name: Regenerate the changelog
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    # Never from a fork, never off master (workflow_dispatch can be started
+    # from any branch, and the push below names master explicitly), and never
+    # on a release commit: Release_Protocol.md asks the maintainer to curate
+    # src/CHANGES.md by hand for a release, and regenerating would revert that.
+    if: >-
+      github.repository == 'dbic/handbook'
+      && github.ref == 'refs/heads/master'
+      && !contains(github.event.head_commit.message, 'REL:')
     steps:
       - uses: actions/checkout@v4
 
-      # Pinned: this generator changes its output format between releases, and
-      # a reformatted changelog would show up as a spurious commit.
+      # Pinned because this generator has changed its output format between
+      # releases, which would show up here as a large spurious commit.
       - name: Install github_changelog_generator
         run: |
           gem install --user-install --no-document github_changelog_generator -v 1.18.0
@@ -63,10 +75,14 @@ jobs:
       - name: Bring it in line with the Markdown style guide
         run: |
           npx remark src/CHANGES.md --output --setting "bullet: '-'" --quiet
-          npx remark src/CHANGES.md --frail --quiet
+          npx remark src/CHANGES.md --frail --quiet --no-stdout
 
+      # Note that branch protection, if it is ever enabled on master, would
+      # reject these pushes: GITHUB_TOKEN does not bypass it without an
+      # explicit Actions bypass in the ruleset.
       - name: Commit and push if it changed
         run: |
+          set -euo pipefail
           if git diff --quiet -- src/CHANGES.md; then
             echo "The changelog is already up to date."
             exit 0
@@ -75,13 +91,22 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add src/CHANGES.md
           git commit -m '[DOC] Regenerate the changelog'
-          # Someone may have pushed while the changelog was being generated.
+          # Someone may have pushed while the changelog was being generated, so
+          # rebase and try again -- but only for as long as the rebase is
+          # clean, because a conflict left in place would turn the next push
+          # into a silent no-op that discards this commit.
           for attempt in 1 2 3; do
+            if [ "$attempt" -gt 1 ]; then
+              if ! git pull --rebase origin master; then
+                git rebase --abort || true
+                echo "Rebasing the changelog onto master conflicted." >&2
+                exit 1
+              fi
+            fi
             if git push origin HEAD:master; then
               exit 0
             fi
-            echo "Push rejected, rebasing onto the current master (attempt ${attempt})."
-            git pull --rebase origin master
+            echo "Push rejected (attempt ${attempt})."
           done
           echo "Could not push the regenerated changelog." >&2
           exit 1
