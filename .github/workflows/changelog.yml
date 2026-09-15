@@ -1,0 +1,87 @@
+name: Changelog
+
+# Ported from the CircleCI github-changelog-generator / remark / Changelog-bot
+# job chain.  Every push to master regenerates src/CHANGES.md from the merged
+# pull requests and commits it back if it changed.
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+# Two runs must never race each other into a push.
+concurrency:
+  group: changelog
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  changelog:
+    name: Regenerate the changelog
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pinned: this generator changes its output format between releases, and
+      # a reformatted changelog would show up as a spurious commit.
+      - name: Install github_changelog_generator
+        run: |
+          gem install --user-install --no-document github_changelog_generator -v 1.18.0
+          echo "$(gem env user_gemhome)/bin" >> "$GITHUB_PATH"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # --header-label carries the '# ' that CircleCI omitted, which left the
+      # title as a paragraph rather than a heading.  The --base file the old
+      # configuration passed has never existed in this repository, so it is
+      # gone rather than ported.
+      - name: Generate src/CHANGES.md
+        env:
+          CHANGELOG_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          github_changelog_generator \
+            --user "${{ github.repository_owner }}" \
+            --project "${{ github.event.repository.name }}" \
+            --output src/CHANGES.md \
+            --header-label '# Changelog' \
+            --no-issues \
+            --no-issues-wo-labels \
+            --no-filter-by-milestone \
+            --no-compare-link \
+            --pr-label ''
+
+      # The generator emits runs of blank lines that our style guide rejects,
+      # so the file is reformatted before it is checked.  remark's own default
+      # bullet is '*' and the style guide wants '-', hence the override.
+      - name: Bring it in line with the Markdown style guide
+        run: |
+          npx remark src/CHANGES.md --output --setting "bullet: '-'" --quiet
+          npx remark src/CHANGES.md --frail --quiet
+
+      - name: Commit and push if it changed
+        run: |
+          if git diff --quiet -- src/CHANGES.md; then
+            echo "The changelog is already up to date."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/CHANGES.md
+          git commit -m '[DOC] Regenerate the changelog'
+          # Someone may have pushed while the changelog was being generated.
+          for attempt in 1 2 3; do
+            if git push origin HEAD:master; then
+              exit 0
+            fi
+            echo "Push rejected, rebasing onto the current master (attempt ${attempt})."
+            git pull --rebase origin master
+          done
+          echo "Could not push the regenerated changelog." >&2
+          exit 1
