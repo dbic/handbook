@@ -29,6 +29,14 @@ OnDemand form does not offer.
 
 Log onto Discovery: `ssh <username>@discovery.dartmouth.edu`
 
+First make `jupyter` available.
+Discovery does not put it on your `PATH` by default, so load the environment you intend to use
+-- either an [environment module](https://rc.dartmouth.edu/hpc/intro-to-hpc/environment-modules/)
+(`module avail python` lists the versions installed) or a
+[conda environment](https://rc.dartmouth.edu/hpc/intro-to-hpc/conda-tutorial/) of your own.
+Use the same environment in step 2, otherwise the job will start a different Jupyter than the one
+you configure here, and it will not find the password you are about to set.
+
 Create a configuration directory and password for Jupyter Notebook:
 
 ```bash
@@ -84,9 +92,10 @@ ssh -N -f -L ${port}:${node}:${port} ${user}@${cluster}.dartmouth.edu
 # Use a Browser on your local machine to go to:
 localhost:${port}
 "
-# Load the Python environment that provides jupyter. See
-# https://rc.dartmouth.edu/hpc/intro-to-hpc/environment-modules/ and
-# https://rc.dartmouth.edu/hpc/intro-to-hpc/conda-tutorial/
+# Make jupyter available, using the same environment as in step 1. Run
+# `module avail python` to see which modules are installed, and replace the
+# line below with the one you want -- or activate your own conda environment
+# instead.
 module load python
 # This runs in the foreground until the job's walltime expires or the job
 # is cancelled with scancel.

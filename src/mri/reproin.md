@@ -40,7 +40,8 @@ where
   a known BIDS sequence type, which is usually the name of the folder under
   the subject's directory.  The (optional) label is specific per sequence type
   (e.g. the typical `bold` for `func`, `T1w` for `anat`, or `fid` for `mrs`), and can often
-  (but not always) be deduced from DICOM.  The modalities known to ReproIn are:
+  (but not always) be deduced from DICOM.  The data types ReproIn converts are
+  `anat`, `func`, `fmap`, `dwi` and `behav`; anything else is skipped with a warning:
 
     - `anat` -- anatomical data.  It might also be collected multiple times across
       runs (e.g. if the subject is taken out of the magnet, etc.), so it could
@@ -57,7 +58,13 @@ where
 
     - `dwi` -- diffusion weighted imaging (which can have runs as well)
 
-    - `mrs` -- magnetic resonance spectroscopy (WiP, [BEP022](https://docs.google.com/document/d/1pWCb02YNv5W-UZZja24fZrdXLm4X7knXMiZI7E2z7mY))
+    - `behav` -- behavioral data.  Recognized by the heuristic, but passed through
+      rather than converted
+
+    - `mrs` -- magnetic resonance spectroscopy (WiP,
+      [BEP022](https://docs.google.com/document/d/1pWCb02YNv5W-UZZja24fZrdXLm4X7knXMiZI7E2z7mY)).
+      Note that upstream ReproIn does not yet list `mrs` among the data types it
+      converts, so the MRS examples below require a heuristic that adds it
 
 - `_ses-<SESID>` (optional) --
   a session.  Having it in even a single sequence within a study makes that study
