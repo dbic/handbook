@@ -58,7 +58,7 @@ In the figure below, we update `v1.2.0-dev` to `v1.2.0`.
 ![dev-to-stable](release_images/site_name_release_1.2dev-1.2.png "dev-to-stable")
 
 Note: this will make the scheduled external link check fail, because the URL of the new Read the Docs rendering has not been generated at this time.
-It will be generated once the GitHub release has been completed.
+It is generated once the tag has been built, which currently requires activating that version on Read the Docs by hand -- see step 8.
 
 Synchronize the [Contributors appendix](https://github.com/dbic/handbook/blob/master/src/99-appendices/01-contributors.md)
 with the [Contributors wiki page](https://github.com/dbic/handbook/wiki/Contributors)
@@ -176,6 +176,11 @@ Click "Publish release".
 Verify ReadTheDocs builds complete and publish. If needed, manually
 trigger [builds](https://readthedocs.org/projects/dbic-handbook/builds/)
 for `stable` and the most recent tag.
+
+Note that the project currently has only one active version, `latest`, which tracks `master`.
+Until a maintainer activates the tag (and a `stable` version) under
+[Versions](https://readthedocs.org/projects/dbic-handbook/versions/), there is no `stable` or
+tagged build to trigger, and the versioned URL used in step 2 will keep returning 404.
 
 ### 9. Edit the mkdocs.yml file site_name to set a new development version
 

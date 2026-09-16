@@ -34,7 +34,7 @@ The following is a non-exhaustive set of justifications for a patch release:
 
 - A modality field has changed and the [bids-validator](https://github.com/bids-standard/bids-validator) has been updated to reflect this change.
 - Links or information in the handbook are no longer accurate, *e.g.* if a BEP document is added or moved
-- The rendering of the [handbook](https://dbic-handbook.readthedocs.io/en/stable/) has changed
+- The rendering of the [handbook](https://dbic-handbook.readthedocs.io/en/latest/) has changed
 - A metadata field or file type is added at the request of a curator attempting to release DBIC-compliant data
 
 Ultimately, all releases are a matter of maintainer discretion, but patch release frequency should

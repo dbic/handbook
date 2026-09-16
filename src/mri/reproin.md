@@ -61,10 +61,10 @@ where
     - `behav` -- behavioral data.  Recognized by the heuristic, but passed through
       rather than converted
 
-    - `mrs` -- magnetic resonance spectroscopy (WiP,
-      [BEP022](https://docs.google.com/document/d/1pWCb02YNv5W-UZZja24fZrdXLm4X7knXMiZI7E2z7mY)).
-      Note that upstream ReproIn does not yet list `mrs` among the data types it
-      converts, so the MRS examples below require a heuristic that adds it
+    - `mrs` -- [magnetic resonance spectroscopy][], which BEP022 added to the BIDS
+      specification.  Note that upstream ReproIn does not yet list `mrs` among the
+      data types it converts, so the MRS examples below require a heuristic that
+      adds it
 
 - `_ses-<SESID>` (optional) --
   a session.  Having it in even a single sequence within a study makes that study
@@ -157,8 +157,9 @@ TODO: check that it actually works ;)
 
 ### MRS
 
-WiP to define sensible names for MRS sequences.  BIDS MRS BEP022 is not yet
-finalized, so we are only self-compliant here.
+WiP to define sensible names for MRS sequences.  BEP022 has since been merged, so
+[MRS is part of the BIDS specification][magnetic resonance spectroscopy], but the
+names below predate it and are only self-compliant.
 
 - `svs_GABA_160_rival` -> `mrs_acq-gaba_task-rival` -- produces 3 measurements:
 
@@ -177,6 +178,8 @@ finalized, so we are only self-compliant here.
 [bids specification "anatomy imaging data"]: https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/01-magnetic-resonance-imaging-data.html#anatomy-imaging-data
 
 [heudiconv]: https://github.com/nipy/heudiconv
+
+[magnetic resonance spectroscopy]: https://bids-specification.readthedocs.io/en/stable/modality-specific-files/magnetic-resonance-spectroscopy.html
 
 [heuristic]: https://github.com/nipy/heudiconv/blob/master/heudiconv/heuristics/reproin.py
 

@@ -52,8 +52,10 @@ jobs:
 
       # --header-label carries the '# ' that CircleCI omitted, which left the
       # title as a paragraph rather than a heading.  The --base file the old
-      # configuration passed has never existed in this repository, so it is
-      # gone rather than ported.
+      # configuration passed, src/pregh-changes.md, was deleted in October 2019
+      # when this repository was split out of bids-specification; the generator
+      # guards every use of it with File.file?, so passing a path that is not
+      # there did nothing at all.  Not ported.
       - name: Generate src/CHANGES.md
         env:
           CHANGELOG_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
