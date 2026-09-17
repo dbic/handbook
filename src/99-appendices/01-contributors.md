@@ -1,7 +1,6 @@
 # Appendix I: Contributors
 
-Legend (source:
-[https://github.com/kentcdodds/all-contributors](https://github.com/kentcdodds/all-contributors))
+Legend (source: [all-contributors](https://github.com/kentcdodds/all-contributors))
 
 | Emoji | Represents                                                                  |
 |:------|:----------------------------------------------------------------------------|
@@ -16,7 +15,7 @@ Legend (source:
 | 💵    | Financial Support                                                           |
 | 🔍    | Funding/Grant Finders                                                       |
 | 🤔    | Ideas & Planning                                                            |
-| 🚇    | Infrastructure (Hosting, Build-Tools, etc)                                  |
+| 🚇    | Infrastructure (Hosting, Build tools, etc.)                                  |
 | 🔌    | Plugin/utility libraries                                                    |
 | 👀    | Reviewed Pull Requests                                                      |
 | 🔧    | Tools                                                                       |
@@ -30,5 +29,5 @@ The following individuals have contributed to the Dartmouth Brain Imaging Center
 ecosystem (in alphabetical order). If you contributed to the DBIC ecosystem and
 your name is not listed, please add it.
 
--   Yaroslav O. Halchenko 📖📢🔧💬🐛👀
--   Austin Macdonald📖🔧💬🐛👀
+- Yaroslav O. Halchenko 📖📢🔧💬🐛👀
+- Austin Macdonald 📖🔧💬🐛👀

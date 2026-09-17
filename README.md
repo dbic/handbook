@@ -1,10 +1,8 @@
-[![Build Status](https://travis-ci.com/dbic/handbook.svg?branch=master)](https://travis-ci.com/dbic/handbook)
-[![CircleCI](https://circleci.com/gh/dbic/handbook.svg?style=svg)](https://circleci.com/gh/dbic/handbook)
+[![CI](https://github.com/dbic/handbook/actions/workflows/ci.yml/badge.svg)](https://github.com/dbic/handbook/actions/workflows/ci.yml)
+[![Documentation](https://readthedocs.org/projects/dbic-handbook/badge/?version=latest)](https://dbic-handbook.readthedocs.io/en/latest/)
 
-
-<img src="./DBIC_logo/DBIC_logo_black_transparent_background_crop.png" alt="dbic-log" width="600"/>
-
-The [Dartmouth Brain Imaging Center (DBIC)](https://dartmouth.edu/dbic) is a research resource that is provided by Dartmouth College to all brain researchers in the Dartmouth community.  Please visit [DBIC website](https://www.dartmouth.edu/dbic/) for more information.
+The [Dartmouth Brain Imaging Center (DBIC)](https://dartmouth.edu/dbic) is a research resource that is provided by Dartmouth College to all brain researchers in the Dartmouth community.
+Please visit the [DBIC website](https://www.dartmouth.edu/dbic/) for more information.
 
 In this repository, we develop the [DBIC Handbook](https://dbic-handbook.readthedocs.io/en/latest/).
 
@@ -17,7 +15,11 @@ For a current list of our contributors, please see our [Contributors appendix](h
 
 When you're ready to get started, check out [our contributing guidelines](https://github.com/dbic/handbook/blob/master/CONTRIBUTING.md).
 
-We ask that all contributions to DBIC across all project-related spaces (including but not limited to:
-[GitHub](https://github.com/dbic),
-the [mrusers mailing list](http://dbic.dartmouth.edu/mailman/listinfo/mrusers)),
-adhere to our [code of conduct](https://github.com/dbic/handbook/blob/master/CODE_OF_CONDUCT.md).
+We ask that all contributions to DBIC, across all project-related spaces (including but not limited to
+[GitHub](https://github.com/dbic) and
+the [mrusers mailing list](mailto:mrusers@groups.dartmouth.edu)),
+follow Dartmouth's [Nondiscrimination and Anti-Harassment Policy](https://policies.dartmouth.edu/policy/nondiscrimination-and-anti-harassment-policy-and-resolution-procedures).
+Harassment, discrimination or retaliation can be reported to the Office of Equal Opportunity, Accessibility, and Title IX (EOATIX)
+at (603) 646-0922 or Parkhurst Hall, Suite 05; the
+[Title IX reporting form](https://sexual-respect.dartmouth.edu/reporting-support/report-incident) and the anonymous
+[Dartmouth Integrity Helpline](https://dartmouth.ethicspoint.com) are also available.

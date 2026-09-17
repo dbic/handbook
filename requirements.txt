@@ -1,1 +1,4 @@
-mkdocs-material
+# Kept below MkDocs 2.0 on purpose: it drops the plugin and theming systems
+# that Material for MkDocs (and therefore this handbook) relies on.
+mkdocs >= 1.6, < 2
+mkdocs-material >= 9.5, < 10
