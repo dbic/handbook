@@ -2,6 +2,7 @@
 
 ## [Unreleased](https://github.com/dbic/handbook/tree/HEAD)
 
+- \[INFRA] Move CI to GitHub Actions, modernize the docs build, and proofread the handbook [#33](https://github.com/dbic/handbook/pull/33) ([yarikoptic-gitmate](https://github.com/yarikoptic-gitmate))
 - \[FIX] Add HostName to ssh config [#31](https://github.com/dbic/handbook/pull/31) ([asmacdo](https://github.com/asmacdo))
 - \[ENH] Update discovery.md to add ACLs [#30](https://github.com/dbic/handbook/pull/30) ([jcf2](https://github.com/jcf2))
 - Ensure datalad version > 0.19.3 [#25](https://github.com/dbic/handbook/pull/25) ([asmacdo](https://github.com/asmacdo))
