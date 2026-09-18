@@ -146,4 +146,9 @@ To view ACLs the standard command is `getfacl`, but on NFSv4 filesystems (such a
 ### ACL pro tips
 
 - The local command `listADgroup` can provide a listing of group members in any ACL group by executing an Active Directory query (this is a Python wrapper that does an LDAP lookup and formats it, along with extra information about each member)
+- Discovery/DartFS accounts are identified by a cryptic NetID-style username (e.g. `d31548v`) instead of your name, so `ls -l`/ACL output showing such a username is not obviously meaningful. Use the local `youser` command to resolve one to the actual person, e.g.:
+  ```
+  [d31548v@ndoli ~]$ youser $USER
+  Yaroslav O. Halchenko, Faculty, PBS, d31548v, 199723
+  ```
 - Refer to the Research Computing docs for complete details --- [this doc](https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=88459) on DartFS lab permissions is a good starting point (searching inside of [services.dartmouth.edu](https://services.dartmouth.edu) for "DartFS permissions" will show a few other locally generated documents)
