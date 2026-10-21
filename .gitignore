@@ -1,3 +1,4 @@
-site/.idea
-site
+node_modules/
+/site/
+.cache/
 .idea

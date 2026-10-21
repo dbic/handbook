@@ -18,8 +18,8 @@ See the [CONTRIBUTING](https://github.com/dbic/handbook/blob/master/CONTRIBUTING
 - If you are opening a PR to obtain early feedback, but the changes
   are not ready to be merged (a.k.a. Work in Progress PR) please
   use a [draft PR](https://github.blog/2019-02-14-introducing-draft-pull-requests/).
-- After opening the PR, our continuous integration services will automatically check your contribution  for formatting errors and render a preview of the DBIC Handbook with your changes.
-  To see the checks and preview, scroll down and click on the `show all checks` link.
-  From the list, select the `Details` link of the `ci/circleci: build_docs artifact` check to see the preview of the DBIC Handbook.
+- After opening the PR, GitHub Actions will automatically check your contribution for formatting errors and build the DBIC Handbook with your changes.
+  To see the checks, scroll down and click on the `Show all checks` link.
+  The rendered handbook is attached to the `Build handbook` job as the `site` artifact, which you can download from the run summary page.
 
 --- PLEASE READ AND DELETE THE TEXT ABOVE BEFORE OPENING THE PULL REQUEST ---
