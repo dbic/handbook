@@ -87,10 +87,10 @@ nav:
     - EEG: todo/eeg.md
     - MRS: todo/mrs.md
     - Computing resources:
-      - Discovery HPC: computing/discovery.md
-      - Jupyter on Discovery: computing/discovery-jupyter.md
-      - Passwordless SSH: computing/kerberos.md
-      - Troubleshooting: computing/troubleshooting.md
+        - Discovery HPC: computing/discovery.md
+        - Slurm: computing/slurm.md
+        - Groups and permissions: computing/permissions.md
+        - Kerberos: computing/kerberos.md
     - Publishing:
         - Datasets: todo/datasets.md
         - Data papers: publishing/data-paper.md
